@@ -1,7 +1,7 @@
 const app = angular.module('etrilco', ['ngRoute']);
 
-// const url = 'http://178.128.245.146:3000';
-const url = 'http://localhost:3000';
+const url = 'http://178.128.245.146:3000';
+// const url = 'http://localhost:3000';
 
 app
     .config(function ($routeProvider, $locationProvider) {
