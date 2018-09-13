@@ -1,0 +1,17 @@
+.select-class-row [class^='col-'] {
+    text-align: center;
+}
+.select-class-row .z-index:hover {
+    z-index: 1;
+}
+
+.select-class-row img {
+    max-height: 37vh;
+    filter: blur(6px);
+    transition: all .1s ease-in-out
+}
+.select-class-row img:hover {
+    filter: none;
+    transform: scale(1.5);
+    z-index: 1;
+}

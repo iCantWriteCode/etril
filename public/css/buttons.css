@@ -1,0 +1,9 @@
+.btn-outline {
+    background: transparent;
+    border: 1px solid #4bcb7e;
+    color: #4bcb7e;
+}
+.btn-fill {
+    background: #4bcb7e;
+    color: white;
+}

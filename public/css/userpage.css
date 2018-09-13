@@ -1,0 +1,21 @@
+.user-page button.btn {
+    width: 175px;
+    padding: .5rem;
+}
+.user-page .btn-outline.collapsed {
+    background: transparent;
+    border: 1px solid #4bcb7e;
+    color: #4bcb7e;
+   
+}
+.user-page .btn-outline {
+    background: #4bcb7e;
+    color: white;
+    border: 1px solid #4bcb7e;
+}
+.sidemenu {
+    min-height: 100vh;
+    background: #4bcb7e;
+    max-width: 250px;
+    color: white;
+}

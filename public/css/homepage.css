@@ -1,0 +1,21 @@
+.homepage button.btn {
+    min-width: 100px;
+}
+
+@media (min-width: 576px) {
+
+    .homepage .modal-dialog {
+        max-width: 80%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    } 
+    .homepage #loginModal .modal-dialog {
+        max-width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    } 
+}

@@ -1,0 +1,20 @@
+o gm na dinei prosvash stous paixtes stous xartes
+
+
+o gm exei kwdiko
+oi pextes kanoun login me ayton ton kwdiko
+
+
+- log in ws gm
+    1. Provolh olwn twn xartwn eite ta charachter sheets kai ena kwdikos
+    2. character sheets add btn 5psifios kwdikos
+    3. 
+
+{"where": {"roomCode" : "Room 3"}}
+
+
+User Enters A room 
+1. Make the POST to room Array after class choise
+
+CHARACTER CREATION
+
