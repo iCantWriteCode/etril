@@ -8,6 +8,9 @@
     <div class="row">
         <div class="col">
             <h5>List Of Players</h5>
+            <ul class="list-group" ng-repeat="player in roomData.players">
+                <a ng-href="/room/{{room.roomCode}}" class="list-group-item">{{player.id}}</a>
+            </ul>
         </div>
     </div>
 </div>

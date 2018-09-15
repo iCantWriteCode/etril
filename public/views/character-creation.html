@@ -1,82 +1,14 @@
-<div class="container-fluid pt-3 height-100vh d-flex" style="background: #42403d;    padding: 0 2.5rem;">
-    <!-- <div class="col">
-             <form ng-submit="finishCharacterCreation(data)">
-                <h5>1. Please Choose Your Race</h5>
-                <div class="form-group">
-                    <select ng-model="data.race" class="custom-select">
-                        <option selected disabled>Open this select menu</option>
-                        <option value="Shamadji Teca">Shamadji Teca</option>
-                        <option value="Shamadji Roht">Shamadji Roht</option>
-                        <option value="Urugar">Urugar</option>
-                        <option value="Human">Human</option>
-                        <option value="Vampire">Vampire</option>
-                        <option value="Black Chotgor">Black Chotgor</option>
-                        <option value="Red Chotgor">Red Chotgor</option>
-                        <option value="Gargoyle">Gargoyle</option>
-                        <option value="Grepter">Grepter</option>
-                    </select>
-                </div>
-                <h5>2. Please Choose Your Class</h5>
-                <div class="form-group">
-                    <select ng-model="data.class" class="custom-select">
+<div class="container-fluid px-5 height-100vh character-creation-page">
 
-                        <option ng-if="data.race === 'Shamadji Teca' || 
-                                        data.race === 'Shamadji Roht' ||
-                                        data.race === 'Urugar' ||
-                                        data.race === 'Human'" value="Chevalier">Chevalier</option>
-
-                        <option ng-if=" data.race === 'Shamadji Teca' || 
-                                        data.race === 'Shamadji Roht' ||
-                                        data.race === 'Urugar' ||
-                                        data.race === 'Human'" value="Scholar">Scholar</option>
-
-                        <option ng-if=" data.race === 'Vampire' || 
-                                        data.race === 'Black Chotgor' ||
-                                        data.race === 'Red Chotgor' ||
-                                        data.race === 'Gargoyle' ||
-                                        data.race === 'Grepter' ||
-                                        data.race === 'Human'" value="Rogue">Rogue</option>
-
-                        <option ng-if=" data.race === 'Vampire' || 
-                                        data.race === 'Black Chotgor' ||
-                                        data.race === 'Red Chotgor' ||
-                                        data.race === 'Gargoyle' ||
-                                        data.race === 'Grepter' ||
-                                        data.race === 'Human'" value="Plague Doctor">Plague Doctor</option>
-
-                        <option ng-if=" data.race === 'Shamadji Teca' || 
-                                        data.race === 'Shamadji Roht' ||
-                                        data.race === 'Urugar' ||
-                                        data.race === 'Human' ||
-                                        data.race === 'Vampire' || 
-                                        data.race === 'Black Chotgor' ||
-                                        data.race === 'Red Chotgor' ||
-                                        data.race === 'Gargoyle' ||
-                                        data.race === 'Grepter'" value="Routier">Routier</option>
-
-                        <option ng-if="data.race === 'Shamadji Teca' || 
-                                        data.race === 'Shamadji Roht' ||
-                                        data.race === 'Urugar' ||
-                                        data.race === 'Human' ||
-                                        data.race === 'Vampire' || 
-                                        data.race === 'Black Chotgor' ||
-                                        data.race === 'Red Chotgor' ||
-                                        data.race === 'Gargoyle' ||
-                                        data.race === 'Grepter'" value="Ranger">Ranger</option>
-                    </select>
-                  
-                </div>
-                <button type="submit" class="btn btn-fill float-right">Finish Character Creation</button>
-            </form> 
-        </div>-->
-    <!-- {{step}} -->
     <div ng-show="step === 1" ng-class="step === 1 ? 'showDat' ? 'hideDat'">
-        <div class="row mb-4">
+
+        <div class="row">
             <div class="col text-center">
                 <h3 style="color: #bb843e;font-family: 'Kaushan Script', cursive;font-size: 49px">1. Choose Your Class</h3>
             </div>
         </div>
-        <div class="row align-items-center jutify-content-center select-class-row">
+
+        <div class="row mx-0 align-items-center select-class-row">
             <div class="col z-index" ng-click="classChoise('Shamadji Teca')">
                 <img src="/images/character-creation/classes/1. Shamadji_Teca_template.png" class="img-fluid">
             </div>
@@ -93,7 +25,8 @@
                 <img src="/images/character-creation/classes/6.Vampire_template.png" class="img-fluid">
             </div>
         </div>
-        <div class="row align-items-center jutify-content-center select-class-row">
+
+        <div class="row  mx-0 w-100 align-items-center select-class-row">
             <div class="col-md" ng-click="classChoise('Black Chotgor')">
                 <img src="/images/character-creation/classes/8. chotgor_black_templete.png" class="img-fluid">
             </div>
@@ -107,33 +40,29 @@
                 <img src="/images/character-creation/classes/9.Grepter_template.png" class="img-fluid">
             </div>
         </div>
+
     </div>
 
-    <div ng-show="step === 2" style="">
-        <span ng-click="characterCreationStep(1)"> (-- back to class selection</span>
-        <div style="height: 88vh;
-        display: flex;
-        align-items: center;">
-            <div class="row">
+    <div class="row" ng-show="step === 2">
 
-                <div class="col-md-4">
-                    <img ng-src="{{selectedClass[0].img}}" alt="" class="img-fluid">
-                </div>
-                <div class="col-md-8 d-flex flex-column" style="    padding-bottom: 5rem;">
-                    <h3>{{selectedClass[0].type}}</h3>
-                    <div>Vitality: {{selectedClass[0].vitality}}</div>
-                    <div>Power: {{selectedClass[0].power}}</div>
-                    <div>Mobility: {{selectedClass[0].mobility}}</div>
-                    <div>Teamwork: {{selectedClass[0].teamwork}}</div>
-                    <div class="mt-auto">{{selectedClass[0].description}}</div>
+        <div class="col-12" style="padding: 2rem 0;font-size: 1.5rem;">
+            <span ng-click="characterCreationStep(1)">
+                <img src="/images/icons/back.svg" class="img-fluid" style="max-width:25px">
+                <span class="gold-color">Back</span>
+            </span>
 
-                </div>
-
-
-            </div>
         </div>
-
+        <div class="col-4" style="height: calc(100vh - 101px); ">
+            <img ng-src="{{selectedClass.img}}" class="img-fluid" style="max-height: 100%;">
+        </div>
+        <div class="col-8 d-flex flex-column gold-color" style="padding-bottom: 2rem;">
+            <h2 class="mb-4">{{selectedClass.type}}</h2>
+            <h3>Vitality: {{selectedClass.vitality}}</h3>
+            <h3>Power: {{selectedClass.power}}</h3>
+            <h3>Mobility: {{selectedClass.mobility}}</h3>
+            <h3>Teamwork: {{selectedClass.teamwork}}</h3>
+            <div class="mt-auto" style="font-size: 1.5rem;">{{selectedClass.description}}</div>
+            <button class="mt-3 choose-class-btn">Choose {{selectedClass.type}}</button>
+        </div>
     </div>
-
-
 </div>

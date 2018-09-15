@@ -58,12 +58,8 @@
         </div>
 
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <ul class="list-group">
-                <a href="" class="list-group-item">Game: | Game Name 1</a>
-                <a href="" class="list-group-item">Game: | Game Name 2</a>
-                <a href="" class="list-group-item">Game: | Game Name 3</a>
-                <a href="" class="list-group-item">Game: | Game Name 4</a>
-                <a href="" class="list-group-item">Game: | Game Name 5</a>
+            <ul class="list-group" ng-repeat="room in rooms">
+                <a ng-href="/room/{{room.roomCode}}" class="list-group-item">{{room.roomCode}}</a>
             </ul>
         </div>
 

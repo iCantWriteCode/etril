@@ -1,9 +1,32 @@
 app.controller('userPageCtrl', function ($scope, $location, $http) {
+
+
     if (localStorage.user) {
         $scope.user = JSON.parse(localStorage.getItem('user'))
         $location.url('/user-page')
     }
     console.warn($scope.user)
+
+    // Get the rooms of a user
+    $scope.getUserRooms = () => {
+        if ($scope.user.type === 'GM') {
+            $scope.queryParam = {
+                "where": { "gm": $scope.user.username }
+            }
+        } else {
+            $scope.queryParam = {
+                "where": { "players": { "elemMatch": { "id": $scope.user.username } } }
+            }
+        }
+        let queryParam = JSON.stringify($scope.queryParam)
+        $http.get(`${url}/api/rooms?filter=${queryParam}`)
+            .then(res => {
+                $scope.rooms = res.data
+                console.log($scope.rooms)
+
+            })
+    }
+    $scope.getUserRooms()
 
 
     $scope.logoutUser = () => {
@@ -12,7 +35,7 @@ app.controller('userPageCtrl', function ($scope, $location, $http) {
     }
 
     $scope.createNewRoom = (data) => {
-        data.gm = $scope.user.id
+        data.gm = $scope.user.username
         $http.post(`${url}/api/rooms`, data)
             .then(res => {
                 $scope.sucessMsg = 'The room has been created successfuly. You will be redirected in the room page shortly'
@@ -33,7 +56,7 @@ app.controller('userPageCtrl', function ($scope, $location, $http) {
                 // console.log(res.data)
 
                 $scope.sucessMsg = 'The room exists. You will be redirected to character creation shortly'
-                playerDataForArray = { "id": $scope.user.id }
+                playerDataForArray = { "id": $scope.user.username }
 
                 // Check if this room has already players
                 if (res.data.players) {
@@ -41,18 +64,20 @@ app.controller('userPageCtrl', function ($scope, $location, $http) {
                     dataToPost = { "players": newPlayerArray }
                 } else dataToPost = { "players": [playerDataForArray] }
 
-                $location.url('/character-creation')
 
                 // This step must be after character class Choose
-                // $http.post(`${url}/api/rooms/update?where=%7B%22roomCode%22%3A%22${res.data.roomCode}%22%7D`,
-                //     JSON.stringify(dataToPost)
-                // )
-                //     .then(res => {
-                //         console.log(res.data)
-                //     })
-                //     .catch(err => {
-                //         console.warn(err.data.error)
-                //     })
+                $http.post(`${url}/api/rooms/update?where=%7B%22roomCode%22%3A%22${res.data.roomCode}%22%7D`,
+                    JSON.stringify(dataToPost)
+                )
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(err => {
+                        console.warn(err.data.error)
+                    })
+
+                $location.url('/character-creation')
+
             })
             .catch(err => {
                 console.warn(err.data)
