@@ -1,7 +1,9 @@
 const app = angular.module('etrilco', ['ngRoute']);
 
-const url = 'http://178.128.245.146:3000';
-// const url = 'http://localhost:3000';
+// const url = 'http://178.128.245.146:3000';
+const url = 'http://localhost:3002';
+// const url = 'http://etrilapi.1024dev.tk';
+
 
 app
     .config(function ($routeProvider, $locationProvider) {
@@ -39,7 +41,7 @@ app
 
         // register listener to watch route changes
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
-            if (localStorage.user == null) {
+            if (localStorage.token == null) {
                 // no logged user, we should be going to #login
                 if (next.templateUrl === "./views/home.html") {
                     // already going to #login, no redirect needed

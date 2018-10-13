@@ -3,12 +3,12 @@
         <div class="col">
 
             <!-- If Gm -->
-            <button ng-if="user.type=== 'GM'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
+            <button ng-if="user.userType=== 'GM'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
                 data-target="#collapseOne" aria-expanded="fase" aria-controls="collapseOne">
                 Create New Room
             </button>
             <!-- If Simple User -->
-            <button ng-if="user.type=== 'Simple User'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
+            <button ng-if="user.userType !== 'GM'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
                 data-target="#collapseOne" aria-expanded="fase" aria-controls="collapseOne">
                 Join New Room
             </button>
@@ -28,10 +28,10 @@
     <div class="accordion" id="accordionExample">
 
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <form ng-if="user.type === 'GM'" ng-submit="createNewRoom(data)">
+            <form ng-if="user.userType === 'GM'" ng-submit="createNewRoom(data)">
                 <div class="form-group">
                     <label>Room Code</label>
-                    <input type="text" class="form-control" placeholder="Enter Your Room Code Here" ng-model="data.roomCode">
+                    <input type="text" class="form-control" placeholder="Enter Your Room Code Here" ng-model="data.name">
                     <div ng-if="sucessMsg" class="alert alert-success mt-3">
                         {{sucessMsg}}
                     </div>
@@ -43,7 +43,7 @@
                     <button class="btn btn-fill">Enter New Room</button>
                 </div>
             </form>
-            <form ng-if="user.type === 'Simple User'" ng-submit="enterNewRoom(data)">
+            <form ng-if="user.userType !== 'GM'" ng-submit="enterNewRoom(data)">
                 <div class="form-group">
                     <label>Room Code</label>
                     <input type="text" class="form-control" placeholder="Enter Your Room Code Here" ng-model="data.roomCode">
