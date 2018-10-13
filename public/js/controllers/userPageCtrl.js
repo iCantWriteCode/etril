@@ -23,7 +23,8 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
                 $scope.sucessMsg = 'The room has been created successfuly. You will be redirected in the room page shortly'
                 // localStorage.setItem('roomCode', res.data.roomCode)
                 // roomdId
-                $http.patch(`${url}/user/${id}/add-room`, roomData.name, { headers: { Authorization: 'JWT ' + token } })
+                console.log(roomData.name)
+                $http.post(`${url}/user/${id}/add-room`, { room: roomData.name }, { headers: { Authorization: 'JWT ' + token } })
                     .then(res => {
                         console.log(res)
                     })
