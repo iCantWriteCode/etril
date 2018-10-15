@@ -1,13 +1,11 @@
-<div class="container user-page">
-    <div class="row my-5">
-        <div class="col">
+<div class="container-fluid user-page">
 
-            <!-- If Gm -->
+    <!-- <div class="row my-5">
+        <div class="col">
             <button ng-if="user.userType=== 'GM'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
                 data-target="#collapseOne" aria-expanded="fase" aria-controls="collapseOne">
                 Create New Room
             </button>
-            <!-- If Simple User -->
             <button ng-if="user.userType !== 'GM'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
                 data-target="#collapseOne" aria-expanded="fase" aria-controls="collapseOne">
                 Join New Room
@@ -25,13 +23,13 @@
             </button>
         </div>
     </div>
-    <div class="accordion" id="accordionExample">
 
+    <div class="accordion" id="accordionExample">
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <form ng-if="user.userType === 'GM'" ng-submit="createNewRoom(data)">
                 <div class="form-group">
-                    <label>Room Code</label>
-                    <input type="text" class="form-control" placeholder="Enter Your Room Code Here" ng-model="data.name">
+                    <label>Room Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Room Name Here" ng-model="data.name">
                     <div ng-if="sucessMsg" class="alert alert-success mt-3">
                         {{sucessMsg}}
                     </div>
@@ -58,20 +56,84 @@
         </div>
 
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <ul class="list-group" ng-repeat="room in rooms">
-                <a ng-href="/room/{{room.roomCode}}" class="list-group-item">{{room.roomCode}}</a>
+            <ul class="list-group" ng-repeat="room in user.rooms ">
+                <a ng-href="/room/{{room._id}}" class="list-group-item mb-2">{{room}}</a>
             </ul>
         </div>
+    </div> -->
 
-        <!-- <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-            non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-            labore sustainable VHS.
-        </div> -->
+    <div class="row">
+        <div class="col sidebar">
+            <img src="/images/Etril_Logo_minimal.png" alt="Etril Co" class="logo img-fluid">
+            <ul class="list-unstyled">
+                <li ng-click="page = 'create-room'">Etril CS</li>
+                <li ng-click="page = 'create-room'">Etril Maps</li>
+                <!-- <li ng-click="page = 'join-room'">Join Existing Room</li> -->
+            </ul>
+        </div>
+        <div class="col main-content">
+            <div class="row">
+                <div class="col top-bar">
+                    <div>Welcome back {{user.username}}</div>
+                    <div>You haven't joined any room yet </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col page-col wrapper">
+                    <div class="position-relative">
+                        <div ng-if="!page">
+                            <!-- <div class="alert alert-success mt-3">
+                                sucessMsg
+                            </div> -->
+                            <div class="create-room">
+                                <div class="action-header">
+                                    <h5>Create A New Room</h5>
+                                    <div class="line"></div>
+                                </div>
+                                <form ng-if="user.userType === 'GM'" ng-submit="createNewRoom(data)">
+                                    <div class="form-group">
+                                        <label>Room Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter Your Room Name Here"
+                                            ng-model="data.name">
+                                        <div ng-if="sucessMsg" class="alert alert-success mt-3">
+                                            {{sucessMsg}}
+                                        </div>
+                                        <div ng-if="failMsg" class="alert alert-danger mt-3">
+                                            {{failMsg}}
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button class="btn btn-fill">Create New Room</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="create-room">
+                                <div class="action-header">
+                                    <h5>Join A Room</h5>
+                                    <div class="line"></div>
+                                </div>
+
+                                <div class="room-list">
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="room in user.rooms">
+                                            <div class="d-flex">
+                                                <span>Name: {{room.name}}</span>
+                                                <span class="ml-auto">ID: {{room.name}}</span>
+                                            </div>
+                                            <div class="users">Users: </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="page === 'create-room'" ng-include="'/views/components/user-page/create-room.html'"
+                            ng-controller="createRoomCtrl"></div>
+                        <div ng-if="page === 'join-room'" ng-include="'/views/components/user-page/join-room.html'"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 
 </div>

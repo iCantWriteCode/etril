@@ -2,8 +2,8 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
     // console.log(url, localStorage)
     // Checks if user is stored in localStorage
 
-    if (localStorage.user) {
-        $scope.user = JSON.parse(localStorage.getItem('user'))
+    if (localStorage.token) {
+        $scope.token = JSON.parse(localStorage.getItem('token'))
         $location.url('/user-page')
     }
 
@@ -29,26 +29,10 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
     // Register User
     $scope.registerUser = (data) => {
         console.log(data)
-
         $http.post(`${url}/user/register`, data)
             .then(res => {
                 console.log(res)
-                $http.post(`${url}/user/login`, data)
-                    .then(res => {
-                        console.log(res.data)
-
-                    })
-                    .catch(err => {
-                        console.warn(err)
-                    })
-                // localStorage.setItem('user', JSON.stringify(res.data))
-                // $scope.user = JSON.parse(localStorage.getItem('user'))
-                // $scope.successMsg = 'You have been registered successfully. You wil be redirected in your userpage shortly'
-                // $timeout(() => {
-                //     if (document.getElementsByClassName('modal-backdrop fade show')[0]) manuallyRemoveBootstrapBackdrop();
-                //     $scope.successMsg = '';
-                //     $location.url('/user-page')
-                // }, 3000);
+                $scope.login(data)
             })
             .catch(err => {
                 console.warn(err)

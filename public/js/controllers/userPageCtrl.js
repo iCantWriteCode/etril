@@ -7,6 +7,7 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
         .then(res => {
             console.log(res)
             $scope.user = res.data
+            // $scope.user.rooms = res.data.rooms.reverse()
         })
         .catch(err => {
             console.warn(err)
@@ -21,23 +22,6 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
             .then(res => {
                 console.log(res)
                 $scope.sucessMsg = 'The room has been created successfuly. You will be redirected in the room page shortly'
-                // localStorage.setItem('roomCode', res.data.roomCode)
-                // roomdId
-                console.log(roomData.name)
-                $http.post(`${url}/user/${id}/add-room`, { room: roomData.name }, { headers: { Authorization: 'JWT ' + token } })
-                    .then(res => {
-                        console.log(res)
-                    })
-                    .catch(err => {
-                        console.warn(err)
-                    })
-                // $timeout(() => {
-                //     // if (document.getElementsByClassName('modal-backdrop fade show')[0]) manuallyRemoveBootstrapBackdrop();
-                //     $scope.successMsg = '';
-                //     $location.url(`/room/${res.data.roomdId}`)
-                //     $location.url('/user-page')
-                // }, 3000);
-
             })
             .catch(err => {
                 if (err.status === 500) $scope.failMsg = 'Το όνομα του Room υπαρχει ήδη. Παρακαλώ επιλέξτε ένα άλλο όνομα'
@@ -74,10 +58,10 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
     // $scope.getUserRooms()
 
 
-    // $scope.logoutUser = () => {
-    //     localStorage.clear()
-    //     $location.url('/')
-    // }
+    $scope.logoutUser = () => {
+        localStorage.clear()
+        $location.url('/')
+    }
 
     // $scope.createNewRoom = (data) => {
     //     data.gm = $scope.user.username
