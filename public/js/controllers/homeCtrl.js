@@ -15,6 +15,7 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
                 $scope.successMsg = 'You have been loged in successfully. You wil be redirected in your userpage shortly'
                 localStorage.setItem('id', JSON.stringify(res.data.id))
                 localStorage.setItem('token', JSON.stringify(res.data.token))
+                localStorage.setItem('userType', JSON.stringify(res.data.userType))
                 $timeout(() => {
                     if (document.getElementsByClassName('modal-backdrop fade show')[0]) manuallyRemoveBootstrapBackdrop();
                     $scope.successMsg = '';

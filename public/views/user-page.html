@@ -66,8 +66,8 @@
         <div class="col sidebar">
             <img src="/images/Etril_Logo_minimal.png" alt="Etril Co" class="logo img-fluid">
             <ul class="list-unstyled">
-                <li ng-click="page = 'create-room'">Etril CS</li>
-                <li ng-click="page = 'create-room'">Etril Maps</li>
+                <li>Etril CS</li>
+                <li>Etril Maps</li>
                 <!-- <li ng-click="page = 'join-room'">Join Existing Room</li> -->
             </ul>
         </div>
@@ -82,9 +82,6 @@
                 <div class="col page-col wrapper">
                     <div class="position-relative">
                         <div ng-if="!page">
-                            <!-- <div class="alert alert-success mt-3">
-                                sucessMsg
-                            </div> -->
                             <div class="create-room">
                                 <div class="action-header">
                                     <h5>Create A New Room</h5>
@@ -115,20 +112,23 @@
 
                                 <div class="room-list">
                                     <ul class="list-unstyled">
-                                        <li ng-repeat="room in user.rooms">
-                                            <div class="d-flex">
-                                                <span>Name: {{room.name}}</span>
-                                                <span class="ml-auto">ID: {{room.name}}</span>
-                                            </div>
-                                            <div class="users">Users: </div>
+                                        <li ng-href="/room/{{room._id}}" ng-repeat="room in user.rooms">
+                                            <a ng-href="/room/{{room._id}}">
+                                                <div class="d-flex">
+                                                    <span>Name: {{room.name}}</span>
+                                                    <span class="ml-auto">ID: {{room._id}}</span>
+                                                </div>
+                                                <div class="users">Users: </div>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div ng-if="page === 'create-room'" ng-include="'/views/components/user-page/create-room.html'"
+                        <!-- <div ng-if="page === 'join-room'" ng-include="'/views/components/user-page/room-page.html'"></div> -->
+                        <!-- <div ng-if="page === 'create-room'" ng-include="'/views/components/user-page/create-room.html'"
                             ng-controller="createRoomCtrl"></div>
-                        <div ng-if="page === 'join-room'" ng-include="'/views/components/user-page/join-room.html'"></div>
+                        <div ng-if="page === 'join-room'" ng-include="'/views/components/user-page/join-room.html'"></div> -->
 
                     </div>
                 </div>

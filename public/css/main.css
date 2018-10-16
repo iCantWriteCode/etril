@@ -8,3 +8,68 @@ body {
 .gold-color {
     color: #bb843e;
 }
+
+
+.sidebar {
+    max-width: 200px;
+    min-height: 100vh;
+    background-color: #212529;
+    color: whitesmoke;
+    padding: 0;
+}
+.sidebar img.logo {
+    display: flex;
+    justify-self: center;
+    max-height: 72px;
+    margin: 0 auto;
+    padding: .5rem;
+}
+
+.sidebar ul li{
+    border-top: 1px solid whitesmoke;
+    padding: 1rem;
+}
+.sidebar ul li:last-child{
+    border-bottom: 1px solid whitesmoke;
+}
+.main-content .top-bar {
+    color: white;
+    background-color: #343a40;
+    padding:1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.main-content .page-col.wrapper {
+    min-height: calc(100vh - 72px);
+    background: whitesmoke;
+    padding: 1rem
+}
+.main-content .page-col.wrapper>div {
+    background: white;
+    height: 100%;
+    border: 1px solid #cccccc;
+    padding: 2rem 1.5rem;
+}
+.main-content .page-col .action-header {
+    display: flex;
+    align-items: center;
+}
+.main-content .page-col .action-header .line {
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+    margin-left: 1rem;
+}
+
+.my-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .my-canvas > img {
+    position:relative; 
+    cursor:pointer;
+    transition: 0.25s transform;
+    max-width: 100%;
+  }

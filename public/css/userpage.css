@@ -19,49 +19,8 @@
     max-width: 250px;
     color: white;
 } */
-.user-page .sidebar {
-    max-width: 200px;
-    min-height: 100vh;
-    background-color: #212529;
-    color: whitesmoke;
-    padding: 0;
-}
-.user-page .sidebar img.logo {
-    display: flex;
-    justify-self: center;
-    max-height: 72px;
-    margin: 0 auto;
-    padding: .5rem;
-}
 
-.user-page .sidebar ul li{
-    border-top: 1px solid whitesmoke;
-    padding: 1rem;
-}
-.user-page .sidebar ul li:last-child{
-    border-bottom: 1px solid whitesmoke;
-}
-
-
-.user-page .main-content .top-bar {
-    color: white;
-    background-color: #343a40;
-    padding:1.5rem;
-    display: flex;
-    justify-content: space-between;
-}
-.user-page .main-content .page-col.wrapper {
-    min-height: calc(100vh - 72px);
-    background: whitesmoke;
-    padding: 1rem
-}
-.user-page .main-content .page-col.wrapper>div {
-    background: white;
-    height: 100%;
-    border: 1px solid #cccccc;
-    padding: 2rem 1.5rem;
-}
-.user-page .main-content .page-col .action-header {
+/* .user-page .main-content .page-col .action-header {
     display: flex;
     align-items: center;
 }
@@ -69,7 +28,7 @@
     flex: 1;
     border-bottom: 1px solid #ccc;
     margin-left: 1rem;
-}
+} */
 .user-page .room-list ul li {
     border-bottom: 1px solid #cccccc;
     padding: 1rem

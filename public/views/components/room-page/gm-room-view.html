@@ -1,0 +1,51 @@
+<!-- <div class="action-header">
+    <h5>Room Info</h5>
+    <div class="line"></div>
+</div>
+<div class="d-flex justify-content-between">
+    <div>Room Name: {{room.name}}</div>
+    <div>Room Code: {{room._id}}</div>
+</div>
+<br>
+<div>
+    <span>Users:
+        <span ng-repeat="user in room.users track by $index">
+            {{user}}
+            <span ng-if="(($index+1) - room.users.length) < 0">,</span>
+        </span>
+    </span>
+</div> -->
+<div ng-init="view = 'maps'"></div>
+<div ng-if="view === 'maps'" style="position:relative">
+    <h3 class="text-center">MAP</h3>
+    <!-- <div style="overflow: scroll;
+    height: calc(100vh - 211px);
+    width: calc(100vw - 282px);">
+        <img src="/images/maps/omap.jpg" alt="" ng-init="zoomWidth = 100;imgStyle = {width:'100%'}" ng-style="imgStyle"
+            ng-mouse-wheel-up="zoomWidth = zoomWidth + 20; imgStyle.width = zoomWidth +'px'; " ng-mouse-wheel-down="zoomWidth = zoomWidth - 20;imgStyle.width = zoomWidth  +'px'; ">
+    </div> -->
+
+    <!-- <button ng-click="zoomIn()">ZoomIn</button>
+    <img id="mapImg" src="/images/maps/omap.jpg" alt="" class="img-fluid"> -->
+
+    <!-- <div class="row" style="background-image: url(/images/maps/omap.jpg); height: calc(100vh - 315px);background-size: contain;
+    background-position: center;background-repeat: no-repeat">
+
+    </div> -->
+
+    <div class="row" style="width: 100%;
+        height: calc(100vh - 211px);   position: relative;overflow: scroll;    margin: 0 auto;">
+        <div class="my-canvas " style="    width: 100%;
+        height: 100%;">
+
+            <img my-draggable src="/images/maps/omap.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+
+        </div>
+    </div>
+
+
+</div>
+
+<div ng-if="view === 'cs'">
+    cs
+</div>

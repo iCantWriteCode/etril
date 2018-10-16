@@ -22,6 +22,10 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
             .then(res => {
                 console.log(res)
                 $scope.sucessMsg = 'The room has been created successfuly. You will be redirected in the room page shortly'
+                $timeout(() => {
+                    $scope.sucessMsg = ''
+                    $location.url(`/room/${res.data.room._id}`)
+                }, 3000);
             })
             .catch(err => {
                 if (err.status === 500) $scope.failMsg = 'Το όνομα του Room υπαρχει ήδη. Παρακαλώ επιλέξτε ένα άλλο όνομα'
