@@ -1,7 +1,7 @@
 app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
     // console.log(url, localStorage)
     // Checks if user is stored in localStorage
-
+    console.log(url)
     if (localStorage.token) {
         $scope.token = JSON.parse(localStorage.getItem('token'))
         $location.url('/user-page')

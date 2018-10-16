@@ -2,23 +2,29 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const helmet = require("helmet");
 
 const app = express();
 
-// Morgan middleware
+// app.use(helmet());
 app.use(morgan('dev'));
+
 // Add headers
 app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, OPTIONS, POST, PATCH, DELETE"
-    );
-    res.setHeader("Access-Control-Max-Age", "3600");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Origin, Content-Type, Authorization, X-Requested-With, Accept"
-    );
+    // Website you wish to allow to connect
+    res.header('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Access-Control-Allow-Headers, Accept');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.header('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
     next();
 });
 
