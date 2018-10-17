@@ -1,6 +1,6 @@
 app.controller('roomCtrl', function ($scope, $interval, $http, $routeParams, $timeout) {
     $scope.view = 'map'
-    $scope.userType = JSON.parse(localStorage.getItem('userType'))
+    $scope.userType = localStorage.getItem('userType')
     console.log($scope.userType)
     $scope.roomCode = $routeParams.roomCode
     console.log($routeParams)
