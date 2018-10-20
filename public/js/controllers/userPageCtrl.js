@@ -1,7 +1,8 @@
 app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
 
-    let id = JSON.parse(localStorage.getItem('id'))
-    let token = JSON.parse(localStorage.getItem('token'))
+    let id = localStorage.getItem('id')
+    let token = localStorage.getItem('token')
+    $scope.userType = localStorage.getItem('userType')
 
     $http.get(`${url}/user/${id}`)
         .then(res => {
@@ -31,6 +32,27 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
                 if (err.status === 500) $scope.failMsg = 'Το όνομα του Room υπαρχει ήδη. Παρακαλώ επιλέξτε ένα άλλο όνομα'
                 else $scope.failMsg = err.data.message
                 console.warn(err)
+            })
+    }
+
+    $scope.joinNewRoom = (data) => {
+        console.log(data)
+        $http.get(`${url}/room/${data.id}`)
+            .then(res => {
+                localStorage.setItem('roomId', data.id)
+                $scope.sucessMsg = 'The room has been found. You will now be redirected to create your character'
+                $timeout(() => {
+                    $scope.sucessMsg = ''
+                    $location.url(`/race-selection`)
+                }, 4000);
+            })
+            .catch(err => {
+                console.log(err)
+                $scope.failMsg = 'The room does not exist'
+                $timeout(() => {
+                    $scope.failMsg = ''
+                    // $location.url(`/room/${res.data.room._id}`)
+                }, 4000);
             })
     }
 

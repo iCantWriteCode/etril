@@ -73,3 +73,54 @@ body {
     transition: 0.25s transform;
     max-width: 100%;
   }
+
+.show-map-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #4bcb7e;
+    color: #4bcb7e;
+    padding: .5rem 1rem;
+    margin-bottom: .25rem;
+}
+.show-map-btn.active {
+    background: #4bcb7e;
+    color: white
+}
+.navtabs {
+    background: whitesmoke;
+    padding: 1rem;
+    border: 1px solid #cccccc;
+    border-bottom: none
+}
+.navtabs .col.active {
+    font-weight: 700;
+}
+.row.nav-content {
+    border: 1px solid #cccccc;
+    border-top:none;
+    padding: 1rem;
+
+}
+.battle-stats-col > .row > .col:last-child,
+.off-combact-stats-col > .row > .col:last-child {
+    text-align: right
+}
+.gear-col > .col-md-6 {
+    border-top:1px solid grey;
+    border-bottom:1px solid grey;
+    padding: 1rem 0;
+}
+ .gear-col .col-md-6:not(:last-child) > div {
+    padding-right: .5rem;
+    border-right: 1px solid #ccc
+}
+.gear-col > .col-md-6:last-child > div {
+    padding-left: .5rem
+}
+.gear-col > .col-md-6 > div:first-child {
+    border-bottom:1px solid #ccc;
+}
+.gear-col .col-md-6 div {
+    background: red;
+    padding: .5rem
+}

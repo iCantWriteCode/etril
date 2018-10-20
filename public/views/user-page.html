@@ -1,5 +1,4 @@
 <div class="container-fluid user-page">
-
     <!-- <div class="row my-5">
         <div class="col">
             <button ng-if="user.userType=== 'GM'" class="btn btn-outline collapsed" type="button" data-toggle="collapse"
@@ -69,7 +68,6 @@
                 <li>Etril CS</li>
                 <li>Etril Maps</li>
                 <li ng-click="logoutUser()">Logout</li>
-                <!-- <li ng-click="page = 'join-room'">Join Existing Room</li> -->
             </ul>
         </div>
         <div class="col main-content">
@@ -79,61 +77,10 @@
                     <div>You haven't joined any room yet </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col page-col wrapper">
-                    <div class="position-relative">
-                        <div ng-if="!page">
-                            <div class="create-room">
-                                <div class="action-header">
-                                    <h5>Create A New Room</h5>
-                                    <div class="line"></div>
-                                </div>
-                                <form ng-if="user.userType === 'GM'" ng-submit="createNewRoom(data)">
-                                    <div class="form-group">
-                                        <label>Room Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter Your Room Name Here"
-                                            ng-model="data.name">
-                                        <div ng-if="sucessMsg" class="alert alert-success mt-3">
-                                            {{sucessMsg}}
-                                        </div>
-                                        <div ng-if="failMsg" class="alert alert-danger mt-3">
-                                            {{failMsg}}
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button class="btn btn-fill">Create New Room</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="create-room">
-                                <div class="action-header">
-                                    <h5>Join A Room</h5>
-                                    <div class="line"></div>
-                                </div>
+            <div ng-if="userType === 'GM'" ng-include="'/views/components/user-page/gm-userpage.html'"></div>
+            <div ng-if="userType !== 'GM'" ng-include="'/views/components/user-page/user-userpage.html'"></div>
 
-                                <div class="room-list">
-                                    <ul class="list-unstyled">
-                                        <li ng-href="/room/{{room._id}}" ng-repeat="room in user.rooms">
-                                            <a ng-href="/room/{{room._id}}">
-                                                <div class="d-flex">
-                                                    <span>Name: {{room.name}}</span>
-                                                    <span class="ml-auto">ID: {{room._id}}</span>
-                                                </div>
-                                                <div class="users">Users: </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div ng-if="page === 'join-room'" ng-include="'/views/components/user-page/room-page.html'"></div> -->
-                        <!-- <div ng-if="page === 'create-room'" ng-include="'/views/components/user-page/create-room.html'"
-                            ng-controller="createRoomCtrl"></div>
-                        <div ng-if="page === 'join-room'" ng-include="'/views/components/user-page/join-room.html'"></div> -->
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

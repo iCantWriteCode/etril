@@ -10,11 +10,16 @@ app.controller('roomCtrl', function ($scope, $interval, $http, $routeParams, $ti
             .then(res => {
                 console.log(res.data)
                 $scope.room = res.data
-                $scope.room.users = ["User 1", "User 2", "User 3"]
+                $scope.userToShow = $scope.room.users[0].id
             })
             .catch(err => {
                 console.warn(err.data)
             })
+    }
+
+    $scope.getUserId = (userId) => {
+        console.log(userId)
+        $scope.userToShow = userId
     }
     // $timeout(function () {
     //     var firstHeight = document.getElementById('mapImg').offsetHeight

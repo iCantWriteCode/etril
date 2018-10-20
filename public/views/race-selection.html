@@ -1,68 +1,67 @@
-<div class="container-fluid px-5 height-100vh character-creation-page">
-
-    <div ng-show="step === 1" ng-class="step === 1 ? 'showDat' ? 'hideDat'">
+<div class="container-fluid px-5 height-100vh character-creation-page" ng-init="characterCreationStep = 'race-selection'">
+    <div ng-if="raceSelectionStep === 1">
 
         <div class="row">
             <div class="col text-center">
-                <h3 style="color: #bb843e;font-family: 'Kaushan Script', cursive;font-size: 49px">1. Choose Your Class</h3>
+                <h3 style="color: #bb843e;font-family: 'Kaushan Script', cursive;font-size: 49px">1. Choose Your Race</h3>
             </div>
         </div>
 
         <div class="row mx-0 align-items-center select-class-row">
-            <div class="col z-index" ng-click="classChoise('Shamadji Teca')">
+            <div class="col z-index" ng-click="racePreview('Shamadji Teca')">
                 <img src="/images/character-creation/classes/1. Shamadji_Teca_template.png" class="img-fluid">
             </div>
-            <div class="col z-index" ng-click="classChoise('Shamadji Roht')">
+            <div class="col z-index" ng-click="racePreview('Shamadji Roht')">
                 <img src="/images/character-creation/classes/2. Shamadji_Roht_Template.png" class="img-fluid">
             </div>
-            <div class="col z-index" ng-click="classChoise('Urugar')">
+            <div class="col z-index" ng-click="racePreview('Urugar')">
                 <img src="/images/character-creation/classes/3. Urugar_Template.png" class="img-fluid">
             </div>
-            <div class="col z-index" ng-click="classChoise('Human')">
+            <div class="col z-index" ng-click="racePreview('Human')">
                 <img src="/images/character-creation/classes/4. Human_template.png" class="img-fluid">
             </div>
-            <div class="col z-index" ng-click="classChoise('Vampire')">
+            <div class="col z-index" ng-click="racePreview('Vampire')">
                 <img src="/images/character-creation/classes/6.Vampire_template.png" class="img-fluid">
             </div>
         </div>
 
         <div class="row  mx-0 w-100 align-items-center select-class-row">
-            <div class="col-md" ng-click="classChoise('Black Chotgor')">
+            <div class="col-md" ng-click="racePreview('Black Chotgor')">
                 <img src="/images/character-creation/classes/8. chotgor_black_templete.png" class="img-fluid">
             </div>
-            <div class="col-md" ng-click="classChoise('Red Chotgor')">
+            <div class="col-md" ng-click="racePreview('Red Chotgor')">
                 <img src="/images/character-creation/classes/7. chotgor_red_template.png" class="img-fluid">
             </div>
-            <div class="col-md" ng-click="classChoise('Gargoyle')">
+            <div class="col-md" ng-click="racePreview('Gargoyle')">
                 <img src="/images/character-creation/classes/5. Gargoyle_template.png" class="img-fluid">
             </div>
-            <div class="col-md" ng-click="classChoise('Grepter')">
+            <div class="col-md" ng-click="racePreview('Grepter')">
                 <img src="/images/character-creation/classes/9.Grepter_template.png" class="img-fluid">
             </div>
         </div>
 
     </div>
 
-    <div class="row" ng-show="step === 2">
+    <div class="row" ng-show="raceSelectionStep === 2">
 
         <div class="col-12" style="padding: 2rem 0;font-size: 1.5rem;">
-            <span ng-click="characterCreationStep(1)">
+            <span ng-click="changeRaceSelectionStep(1)">
                 <img src="/images/icons/back.svg" class="img-fluid" style="max-width:25px">
                 <span class="gold-color">Back</span>
             </span>
 
         </div>
         <div class="col-4" style="height: calc(100vh - 101px); ">
-            <img ng-src="{{selectedClass.img}}" class="img-fluid" style="max-height: 100%;">
+            <img ng-src="{{choosenRace.img}}" class="img-fluid" style="max-height: 100%;">
         </div>
         <div class="col-8 d-flex flex-column gold-color" style="padding-bottom: 2rem;">
-            <h2 class="mb-4">{{selectedClass.type}}</h2>
-            <h3>Vitality: {{selectedClass.vitality}}</h3>
-            <h3>Power: {{selectedClass.power}}</h3>
-            <h3>Mobility: {{selectedClass.mobility}}</h3>
-            <h3>Teamwork: {{selectedClass.teamwork}}</h3>
-            <div class="mt-auto" style="font-size: 1.5rem;">{{selectedClass.description}}</div>
-            <button class="mt-3 choose-class-btn">Choose {{selectedClass.type}}</button>
+            <h2 class="mb-4">{{choosenRace.type}}</h2>
+            <h3>Vitality: {{choosenRace.vitality}}</h3>
+            <h3>Power: {{choosenRace.power}}</h3>
+            <h3>Mobility: {{choosenRace.mobility}}</h3>
+            <h3>Teamwork: {{choosenRace.teamwork}}</h3>
+            <div class="mt-auto" style="font-size: 1.5rem;">{{choosenRace.description}}</div>
+            <button class="mt-3 choose-class-btn" ng-click="playerRace()">Choose {{choosenRace.race}}</button>
         </div>
     </div>
 </div>

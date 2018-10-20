@@ -1,51 +1,134 @@
-<!-- <div class="action-header">
-    <h5>Room Info</h5>
-    <div class="line"></div>
-</div>
-<div class="d-flex justify-content-between">
-    <div>Room Name: {{room.name}}</div>
-    <div>Room Code: {{room._id}}</div>
-</div>
-<br>
-<div>
-    <span>Users:
-        <span ng-repeat="user in room.users track by $index">
-            {{user}}
-            <span ng-if="(($index+1) - room.users.length) < 0">,</span>
-        </span>
-    </span>
-</div> -->
-<div ng-init="view = 'maps'"></div>
 <div ng-if="view === 'maps'" style="position:relative">
     <h3 class="text-center">MAP</h3>
-    <!-- <div style="overflow: scroll;
-    height: calc(100vh - 211px);
-    width: calc(100vw - 282px);">
-        <img src="/images/maps/omap.jpg" alt="" ng-init="zoomWidth = 100;imgStyle = {width:'100%'}" ng-style="imgStyle"
-            ng-mouse-wheel-up="zoomWidth = zoomWidth + 20; imgStyle.width = zoomWidth +'px'; " ng-mouse-wheel-down="zoomWidth = zoomWidth - 20;imgStyle.width = zoomWidth  +'px'; ">
-    </div> -->
 
-    <!-- <button ng-click="zoomIn()">ZoomIn</button>
-    <img id="mapImg" src="/images/maps/omap.jpg" alt="" class="img-fluid"> -->
-
-    <!-- <div class="row" style="background-image: url(/images/maps/omap.jpg); height: calc(100vh - 315px);background-size: contain;
-    background-position: center;background-repeat: no-repeat">
-
-    </div> -->
-
-    <div class="row" style="width: 100%;
-        height: calc(100vh - 211px);   position: relative;overflow: scroll;    margin: 0 auto;">
-        <div class="my-canvas " style="    width: 100%;
-        height: 100%;">
-
-            <img my-draggable src="/images/maps/omap.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-
+    <div class="row">
+        <div class="col" ng-init="map='Guren Graslands'">
+            <span class="show-map-btn" ng-class="map === 'Guren Graslands' ? 'active' : ' ' " ng-click="map = 'Guren Graslands'">
+                Guren Graslands
+            </span>
+            <span class="show-map-btn" ng-class="map==='tamir' ? 'active' :  '' " ng-click="map = 'tamir'">tamir</span>
+            <span class="show-map-btn" ng-class="map==='bayar' ? 'active' :  ''" ng-click="map = 'bayar'">bayar</span>
+            <span class="show-map-btn" ng-class="map==='spike bay' ? 'active' :  ''" ng-click="map = 'spike bay'">spike
+                bay</span>
+            <span class="show-map-btn" ng-class="map==='scarlet hills' ? 'active' : ' '" ng-click="map = 'scarlet hills'">scarlet
+                hills</span>
+            <span class="show-map-btn" ng-class="map==='erdene forest' ? 'active' : ' '" ng-click="map = 'erdene forest'">erdene
+                forest</span>
+            <span class="show-map-btn" ng-class="map==='dalai village' ? 'active' : ' '" ng-click="map = 'dalai village'">dalai
+                village</span>
+            <span class="show-map-btn" ng-class="map==='tsetseg forest' ? 'active' : ' '" ng-click="map = 'tsetseg forest'">tsetseg
+                forest</span>
+            <span class="show-map-btn" ng-class="map==='golden valley' ? 'active' : ' '" ng-click="map = 'golden valley'">golden
+                valley</span>
+            <span class="show-map-btn" ng-class="map==='IkhThorog' ? 'active' : ' '" ng-click="map = 'IkhThorog'">Ikh'Thorog</span>
         </div>
+
     </div>
 
-
+    <div class="row" style="width: 100%; height: calc(100vh - 211px); position: relative;overflow: scroll;    margin: 0 auto;">
+        <div class="my-canvas" style="width: 100%;height: 100%;">
+            <img ng-if="map === 'Guren Graslands'" my-draggable src="/images/maps/omap.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='tamir'" my-draggable src="/images/maps/1.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='bayar'" my-draggable src="/images/maps/2.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='spike bay'" my-draggable src="/images/maps/3.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='scarlet hills'" my-draggable src="/images/maps/4.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='erdene forest'" my-draggable src="/images/maps/5.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='dalai village'" my-draggable src="/images/maps/6.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='tsetseg forest'" my-draggable src="/images/maps/7.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='golden valley'" my-draggable src="/images/maps/8.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+            <img ng-if="map==='IkhThorog'" my-draggable src="/images/maps/9.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+        </div>
+    </div>
 </div>
 
 <div ng-if="view === 'cs'">
-    cs
+
+    <div class="row navtabs">
+        <div class="col" ng-repeat="user in room.users" ng-click="getUserId(user.id)" ng-class="user.id === userToShow ? 'active' : ''">
+            {{user.username}}
+        </div>
+    </div>
+
+    <div class=" row nav-content">
+        <div class="col" ng-repeat="user in room.users" ng-if="userToShow === user.id">
+            <div class="row pb-2">
+                <div class="col">Name: {{user.username}}</div>
+                <div class="col text-right">Level: {{user.level}} <span ng-if="user.level === undefined">undefined</span></div>
+            </div>
+            <div class="row pb-3" style="border-bottom: 1px solid grey">
+                <div class="col">Race: {{user.playerRace}}</div>
+                <div class="col text-center">Class: {{user.playerClass}}</div>
+                <div class="col text-right" style="white-space:nowrap">Subclass: {{user.playerSubclass}}</div>
+            </div>
+            <div class="row py-3" style="border-bottom: 1px solid grey">
+                <div class="col-5 battle-stats-col">
+                    <h5>Battle Statistics</h5>
+                    <div class="row">
+                        <div class="col">Vitality</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Power</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Teamwork</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Armor</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Mobility</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Range</div>
+                        <div class="col">2</div>
+                    </div>
+                </div>
+                <div class="col-2" style="border-left:1px solid grey;border-right:1px solid grey;">
+                    <h5 class="text-center">Total</h5>
+                </div>
+                <div class="col-5 off-combact-stats-col d-flex flex-column">
+                    <h5>Adventure Statistics</h5>
+                    <div class="row">
+                        <div class="col">Exploration</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Diplomacy</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Intelect</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Stamina</div>
+                        <div class="col">2</div>
+                    </div>
+                    <div class="row mt-auto">
+                        <div class="col">Grey Tokens</div>
+                        <div class="col">2</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-3 gear-col">
+                <h5 class="col-12 no-gutters">Gear</h5>
+                <div class="col-md-6 no-gutters">
+                    <div class="text-right">Weapon Slot 1</div>
+                    <div class="text-right">Weapon Slot 2</div>
+                </div>
+                <div class="col-md-6 no-gutters">
+                    <div>Armor Slot 1</div>
+                    <div>Armor Slot 2</div>
+                </div>
+            </div>
+
+            <!-- {{user.id}} -->
+        </div>
+    </div>
 </div>

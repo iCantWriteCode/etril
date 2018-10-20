@@ -3,7 +3,7 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
     // Checks if user is stored in localStorage
     console.log(url)
     if (localStorage.token) {
-        $scope.token = JSON.parse(localStorage.getItem('token'))
+        $scope.token = localStorage.getItem('token')
         $location.url('/user-page')
     }
 
@@ -13,8 +13,9 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
             .then(res => {
                 console.log(res.data)
                 $scope.successMsg = 'You have been loged in successfully. You wil be redirected in your userpage shortly'
-                localStorage.setItem('id', JSON.stringify(res.data.id))
-                localStorage.setItem('token', JSON.stringify(res.data.token))
+                localStorage.setItem('id', res.data.id)
+                localStorage.setItem('username', res.data.username)
+                localStorage.setItem('token', res.data.token)
                 localStorage.setItem('userType', res.data.userType)
 
                 $timeout(() => {
