@@ -28,7 +28,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
         if ($scope.playerRace.race === 'Black Chotgor') {
             let stats = {
                 power: "1",
-                mobillity: "2"
+                mobility: "2"
             }
             if (subclass === "Rogue") {
                 stats.vitality = "2"
@@ -51,18 +51,18 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
             if (subclass === "Routier") {
                 stats.vitality = "3"
                 stats.power = "2"
-                stats.mobillity = "2"
+                stats.mobility = "2"
             } else {
                 stats.vitality = "2"
                 stats.power = "1"
-                stats.mobillity = "1"
+                stats.mobility = "1"
             }
             // console.log(stats)
             return stats
         }
         if ($scope.playerRace.race === 'Gargoyle') {
             let stats = {
-                mobillity: "2",
+                mobility: "2",
                 teamwork: "1"
             }
             if (subclass === "Rogue" || subclass === "Sniper") {
@@ -84,15 +84,15 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
             }
             if (subclass === "Rogue") {
                 stats.power = "1"
-                stats.mobillity = "3"
+                stats.mobility = "3"
                 stats.teamwork = "1"
             } else if (subclass === "Plague Doctor") {
                 stats.power = "2"
-                stats.mobillity = "2"
+                stats.mobility = "2"
                 stats.teamwork = "2"
             } else {
                 stats.power = "1"
-                stats.mobillity = "2"
+                stats.mobility = "2"
                 stats.teamwork = "1"
             }
             // console.log(stats)
@@ -105,13 +105,13 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
             }
             if (subclass === "Scholar") {
                 stats.vitality = "2"
-                stats.mobillity = "1"
+                stats.mobility = "1"
             } else if (subclass === "Sniper") {
                 stats.vitality = "1"
-                stats.mobillity = "2"
+                stats.mobility = "2"
             } else {
                 stats.vitality = "1"
-                stats.mobillity = "1"
+                stats.mobility = "1"
             }
             // console.log(stats)
             return stats
@@ -119,7 +119,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
         if ($scope.playerRace.race === 'Shamadji Roht') {
             let stats = {
                 power: "1",
-                mobillity: "2",
+                mobility: "2",
                 teamwork: "1"
             }
             if (subclass === "Chevalier") {
@@ -132,7 +132,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
         }
         if ($scope.playerRace.race === 'Shamadji Teca') {
             let stats = {
-                mobillity: "2",
+                mobility: "2",
                 teamwork: "1"
             }
             if (subclass === "Scholar") {
@@ -150,36 +150,36 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
         }
         if ($scope.playerRace.race === 'Urugar') {
             let stats = {
-                mobillity: "1",
+                mobility: "1",
                 teamwork: "1"
             }
             if (subclass === "Chevalier") {
-                stats.vitality = 2
-                stats.power = 2
+                stats.vitality = "2"
+                stats.power = "2"
             } else if (subclass === "Chevalier") {
-                stats.vitality = 3
-                stats.power = 2
+                stats.vitality = "3"
+                stats.power = "2"
             } else {
-                stats.vitality = 2
-                stats.power = 1
+                stats.vitality = "2"
+                stats.power = "1"
             }
             // console.log(stats)
             return stats
         }
         if ($scope.playerRace.race === 'Urugar') {
             let stats = {
-                vitality: 1,
-                mobillity: 1
+                vitality: "1",
+                mobility: "1"
             }
             if (subclass === "Plague Doctor") {
-                stats.power = 3
-                stats.teamwork = 1
+                stats.power = "3"
+                stats.teamwork = "1"
             } else if (subclass === "Rogue") {
-                stats.power = 2
-                stats.teamwork = 2
+                stats.power = "2"
+                stats.teamwork = "2"
             } else {
-                stats.power = 2
-                stats.teamwork = 1
+                stats.power = "2"
+                stats.teamwork = "1"
             }
             // console.log(stats)
             return stats

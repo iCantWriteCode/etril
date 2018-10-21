@@ -1,5 +1,5 @@
 <div ng-if="view === 'maps'" style="position:relative">
-    <h3 class="text-center">MAP</h3>
+    <h3 class="text-center">GM</h3>
 
     <div class="row">
         <div class="col" ng-init="map='Guren Graslands'">
@@ -44,48 +44,59 @@
 <div ng-if="view === 'cs'">
 
     <div class="row navtabs">
-        <div class="col" ng-repeat="user in room.users" ng-click="getUserId(user.id)" ng-class="user.id === userToShow ? 'active' : ''">
+        <div class="col" ng-repeat="user in room.users" ng-click="getUserId(user.id)" ng-class="user.id === userToShow.id ? 'active' : ''">
             {{user.username}}
         </div>
     </div>
-
-    <div class=" row nav-content">
-        <div class="col" ng-repeat="user in room.users" ng-if="userToShow === user.id">
+    <form class=" row nav-content" ng-submit="editUserRoomData(userToShow)">
+        <div class="col-12" ng-repeat="user in room.users" ng-if="userToShow.id === user.id">
             <div class="row pb-2">
-                <div class="col">Name: {{user.username}}</div>
-                <div class="col text-right">Level: {{user.level}} <span ng-if="user.level === undefined">undefined</span></div>
+                <div class="col">Name: {{userToShow.username}}</div>
+                <div class="col text-right">Level: {{userToShow.level}} <span ng-if="user.level === undefined">undefined</span></div>
             </div>
             <div class="row pb-3" style="border-bottom: 1px solid grey">
-                <div class="col">Race: {{user.playerRace}}</div>
-                <div class="col text-center">Class: {{user.playerClass}}</div>
-                <div class="col text-right" style="white-space:nowrap">Subclass: {{user.playerSubclass}}</div>
+                <div class="col">Race: {{userToShow.playerRace}}</div>
+                <div class="col text-center">Class: {{userToShow.playerClass}}</div>
+                <div class="col text-right" style="white-space:nowrap">Subclass: {{userToShow.playerSubclass}}</div>
             </div>
             <div class="row py-3" style="border-bottom: 1px solid grey">
                 <div class="col-5 battle-stats-col">
                     <h5>Battle Statistics</h5>
                     <div class="row">
                         <div class="col">Vitality</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.vitality" placeholder="Vitality">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Power</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.power" placeholder="Power">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Teamwork</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.teamwork" placeholder="Teamwork">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Armor</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.armor" placeholder="Armor">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Mobility</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.mobility" placeholder="Mobility">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Range</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.range" placeholder="Range">
+                        </div>
                     </div>
                 </div>
                 <div class="col-2" style="border-left:1px solid grey;border-right:1px solid grey;">
@@ -95,40 +106,99 @@
                     <h5>Adventure Statistics</h5>
                     <div class="row">
                         <div class="col">Exploration</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.exploration" placeholder="Exploration">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Diplomacy</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.diplomace" placeholder="Diplomacy">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Intelect</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.intelect" placeholder="Intelect">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">Stamina</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.stamina" placeholder="Stamina">
+                        </div>
                     </div>
                     <div class="row mt-auto">
                         <div class="col">Grey Tokens</div>
-                        <div class="col">2</div>
+                        <div class="col">
+                            <input class="custom-input" type="text" ng-model="userToShow.stats.greyTokens" placeholder="Grey Tokens">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row py-3 gear-col">
+            <div class="row pt-4 pb-3 gear-col">
                 <h5 class="col-12 no-gutters">Gear</h5>
                 <div class="col-md-6 no-gutters">
-                    <div class="text-right">Weapon Slot 1</div>
-                    <div class="text-right">Weapon Slot 2</div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.gear.weaponSlot1" placeholder=" Weapon Slot 1">
+
+                    </div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.gear.weaponSlot2" placeholder=" Weapon Slot 2">
+                    </div>
                 </div>
                 <div class="col-md-6 no-gutters">
-                    <div>Armor Slot 1</div>
-                    <div>Armor Slot 2</div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.gear.armorSlot1" placeholder=" Armor Slot 1">
+                    </div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.gear.armorSlot2" placeholder=" Armor Slot 2">
+                    </div>
                 </div>
             </div>
 
-            <!-- {{user.id}} -->
+            <div class="row pt-4 pb-3 bag-col">
+                <h5 class="col-12 no-gutters">Bag</h5>
+                <div class="col-md-4 no-gutters">
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.bag.itemSlot1" placeholder=" Item Slot 1">
+                    </div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.bag.itemSlot2" placeholder=" Item Slot 2">
+                    </div>
+                </div>
+                <div class="col-md-4 no-gutters">
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.bag.itemSlot3" placeholder=" Item Slot 3">
+                    </div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.bag.itemSlot4" placeholder=" Item Slot 4">
+                    </div>
+                </div>
+                <div class="col-md-4 no-gutters">
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.bag.itemSlot5" placeholder=" Item Slot 5">
+                    </div>
+                    <div>
+                        <input class="custom-input" type="text" ng-model="userToShow.bag.itemSlot6" placeholder=" Item Slot 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pt-4 pb-3 bag-col">
+                <h5 class="col-12 no-gutters">General Info</h5>
+                <div class="form-group w-100">
+                    <textarea class="form-control" rows="3" ng-model="userToShow.generalInfo"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                </div>
+            </div>
         </div>
-    </div>
+        <button class="btn btn-primary float-right">Save</button>
+    </form>
+
 </div>

@@ -121,6 +121,35 @@ body {
     border-bottom:1px solid #ccc;
 }
 .gear-col .col-md-6 div {
-    background: red;
-    padding: .5rem
+    padding: .5rem;
+    text-align: center
+}
+
+.bag-col > .col-md-4 {
+    border-top:1px solid grey;
+    border-bottom:1px solid grey;
+    padding: 1rem 0;
+}
+.bag-col > .col-md-4 > div:first-child {
+    border-bottom:1px solid #ccc;
+}
+.bag-col .col-md-4 div {
+    padding: .5rem;
+    text-align: center
+}
+.bag-col .col-md-4:not(:last-child) div {
+   border-right: 1px solid #ccc
+}
+/* .bag-col .col-md-4:last-child div {
+    border-left: 1px solid #ccc
+
+} */
+.custom-input {
+    border: none;
+    width: 100%;
+    text-align: right;
+}
+.gear-col .custom-input,
+.bag-col .custom-input{
+    text-align: center
 }
