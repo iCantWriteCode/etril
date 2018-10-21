@@ -1,8 +1,8 @@
 <div ng-if="view === 'maps'" style="position:relative">
-    <div ng-if="singleUser.intelect < 5 ||singleUser.intelect === undefined ">
+    <div ng-if="userToShow.stats.intelect < 5 ||userToShow.stats.intelect === undefined ">
         Go Get Intelect Bruh!
     </div>
-    <div ng-if="userToShow.intelect >= 5">
+    <div ng-if="userToShow.stats.intelect >= 5">
         <div class="row">
             <div class="col" ng-init="map='Guren Graslands'">
                 <span class="show-map-btn" ng-class="map === 'Guren Graslands' ? 'active' : ' ' " ng-click="map = 'Guren Graslands'">
