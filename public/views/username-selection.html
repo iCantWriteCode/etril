@@ -1,0 +1,24 @@
+<div class="container-fluid px-5 height-100vh character-creation-page" style="padding-top:1rem">
+    <div class="row">
+        <div class="col text-center">
+            <h3 style="color: #98e7b8;font-size: 49px">4. Choose Your Username</h3>
+        </div>
+    </div>
+    <form class="container d-flex" ng-submit="createCharacter(username)" style="min-height: calc(100vh - 152px); align-items: center;">
+        <div class="row w-100">
+            <div class="col-md-9">
+                <input class="w-100 h-100" type="text" ng-model="username" placeholder="Enter your glorious username"
+                    style="background: transparent;border: 1px solid white; color: white; padding: 1rem;border-radius: 4px;">
+            </div>
+            <div class="col-md-3">
+                <button class="choose-class-btn" style="width:100%;margin:0!important">Finish</button>
+            </div>
+        </div>
+    </form>
+    <div ng-if='successMsg' class="alert alert-success" role="alert" style="position:fixed;top:50%;left:50%;transform:translate(-50%, -50%)">
+        {{successMsg}}
+    </div>
+    <div ng-if="failMsg" class="alert alert-danger mt-3">
+        {{failMsg}}
+    </div>
+</div>

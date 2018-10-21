@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-fill">Create New Room</button>
+                            <button class="btn btn-fill">Join Room</button>
                         </div>
                     </form>
                 </div>
@@ -31,7 +31,7 @@
 
                     <div class="room-list">
                         <ul class="list-unstyled">
-                            <li ng-href="/room/{{room._id}}" ng-repeat="room in user.rooms">
+                            <li ng-repeat="room in user.rooms">
                                 <a ng-href="/room/{{room._id}}">
                                     <div class="d-flex">
                                         <span>Name: {{room.name}}</span>

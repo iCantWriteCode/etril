@@ -2,7 +2,7 @@ app.controller('raceSelectionCtrl', function ($scope, $location, $racesService) 
 
     $scope.raceSelectionStep = 1
     $scope.races = $racesService.getAllRaces();
-    console.log($scope.races)
+    // console.log($scope.races)
 
     $scope.racePreview = (data) => {
         $scope.raceSelectionStep = 2
@@ -10,9 +10,9 @@ app.controller('raceSelectionCtrl', function ($scope, $location, $racesService) 
     }
 
     $scope.playerRace = () => {
-        console.log($scope.choosenRace)
+        // console.log($scope.choosenRace)
         localStorage.setItem("playerRace", JSON.stringify($scope.choosenRace))
-        console.log(localStorage)
+        // console.log(localStorage)
         $location.url(`/class-selection`)
     }
 

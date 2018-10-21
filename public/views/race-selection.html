@@ -1,9 +1,10 @@
-<div class="container-fluid px-5 height-100vh character-creation-page" ng-init="characterCreationStep = 'race-selection'">
+<div class="container-fluid px-5 height-100vh character-creation-page" ng-init="characterCreationStep = 'race-selection'"
+    style="padding-top: 1rem ">
     <div ng-if="raceSelectionStep === 1">
 
         <div class="row">
             <div class="col text-center">
-                <h3 style="color: #bb843e;font-family: 'Kaushan Script', cursive;font-size: 49px">1. Choose Your Race</h3>
+                <h3 style="color: #98e7b8;font-size: 49px">1. Choose Your Race</h3>
             </div>
         </div>
 
@@ -44,7 +45,7 @@
 
     <div class="row" ng-show="raceSelectionStep === 2">
 
-        <div class="col-12" style="padding: 2rem 0;font-size: 1.5rem;">
+        <div class="col-12" style="padding: 1rem 0;font-size: 1.5rem;">
             <span ng-click="changeRaceSelectionStep(1)">
                 <img src="/images/icons/back.svg" class="img-fluid" style="max-width:25px">
                 <span class="gold-color">Back</span>

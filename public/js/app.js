@@ -45,6 +45,10 @@ app
                 templateUrl: './views/subclass-selection.html',
                 controller: 'subclassSelectionCtrl'
             })
+            .when('/username-selection', {
+                templateUrl: './views/username-selection.html',
+                controller: 'usernameSelectionCtrl'
+            })
             .when('/user-page', {
                 templateUrl: './views/user-page.html',
                 controller: 'userPageCtrl'

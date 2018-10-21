@@ -1,12 +1,16 @@
-app.controller('roomCtrl', function ($scope, $interval, $http, $routeParams, $timeout) {
+app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
 
     $scope.view = 'map'
     $scope.userType = localStorage.getItem('userType')
     $scope.userId = localStorage.getItem('id')
-    // console.log($scope.userType)
-    $scope.roomCode = $routeParams.roomCode
-    // console.log($routeParams)
+    $scope.username = localStorage.getItem('username')
 
+    $scope.roomCode = $routeParams.roomCode
+
+    $scope.logoutUser = () => {
+        localStorage.clear()
+        $location.url('/')
+    }
 
     getRoomData()
 
@@ -18,14 +22,15 @@ app.controller('roomCtrl', function ($scope, $interval, $http, $routeParams, $ti
 
                 if ($scope.room.users && $scope.room.users.length > 0 && $scope.userType === 'GM') {
                     $scope.userToShow = $scope.room.users[0]
-                    console.log($scope.userToShow.id)
-                    //     $scope.userStats = $scope.room.users[0].stats
-                    //     $scope.userGear = $scope.room.users[0].gear
-                    //     $scope.userBag = $scope.room.users[0].bag
-                    //     return
+                    // console.log($scope.userToShow.id)
+
                 } else {
                     $scope.userToShow = $scope.room.users.find(user => user.id === $scope.userId)
-                    console.log($scope.userToShow)
+                    if ($scope.userToShow.playerRace === "" || $scope.userToShow.playerRace === null || $scope.userToShow.playerRace === undefined) {
+                        localStorage.setItem('roomId', $scope.roomCode)
+                        $location.url('/race-selection')
+                    }
+                    // console.log($scope.userToShow)
                 }
                 // else {
                 // $scope.singleUserIndex = $scope.room.users.findIndex(user => user.id === localStorage.getItem('id'))

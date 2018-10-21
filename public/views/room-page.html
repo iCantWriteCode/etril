@@ -1,17 +1,20 @@
 <div class="container-fluid room-page">
     <div class="row">
         <div class="col sidebar">
-            <img src="/images/Etril_Logo_minimal.png" alt="Etril Co" class="logo img-fluid">
+            <a href="/">
+                <img src="/images/Etril_Logo_minimal.png" alt="Etril Co" class="logo img-fluid">
+            </a>
             <ul class="list-unstyled" ng-init="view='cs'">
                 <li ng-click="view = 'maps'">Etril Maps</li>
                 <li ng-click="view = 'cs'">Etril CS</li>
+                <li ng-click="logoutUser()">Logout</li>
             </ul>
         </div>
         <div class="col main-content">
             <div class="row">
                 <div class="col top-bar">
-                    <div>Welcome back {{user.username}}</div>
-                    <div>You haven't joined any room yet </div>
+                    <div>Welcome back {{username}}</div>
+                    <div>Room ID: {{room._id}}</div>
                 </div>
             </div>
             <div class="row">

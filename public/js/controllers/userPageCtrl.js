@@ -8,12 +8,10 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
         .then(res => {
             console.log(res)
             $scope.user = res.data
-            // $scope.user.rooms = res.data.rooms.reverse()
         })
         .catch(err => {
             console.warn(err)
         })
-
     $scope.createNewRoom = (data) => {
         let roomData = {
             name: data.name,
@@ -34,110 +32,113 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
                 console.warn(err)
             })
     }
-
     $scope.joinNewRoom = (data) => {
-        console.log(data)
-        $http.get(`${url}/room/${data.id}`)
+        // console.log(data)
+        let reqData = {
+            roomId: data.id,
+            userId: id,
+        }
+        // return console.log(reqData)
+
+        $http.post(`${url}/room/add-user`, reqData)
             .then(res => {
-                localStorage.setItem('roomId', data.id)
-                $scope.sucessMsg = 'The room has been found. You will now be redirected to create your character'
-                $timeout(() => {
-                    $scope.sucessMsg = ''
-                    $location.url(`/race-selection`)
-                }, 4000);
+                console.log(res)
+
+                $http.get(`${url}/user/${id}`)
+                    .then(res => {
+                        console.log(res)
+                        $scope.user = res.data
+                    })
+                    .catch(err => {
+                        console.warn(err)
+                        $scope.failMsg = err.data.message
+                        $timeout(() => {
+                            $scope.failMsg = ''
+                        }, 4000);
+                    })
+
             })
             .catch(err => {
-                console.log(err)
-                $scope.failMsg = 'The room does not exist'
+                console.warn(err)
+                $scope.failMsg = err.data.message
                 $timeout(() => {
                     $scope.failMsg = ''
-                    // $location.url(`/room/${res.data.room._id}`)
                 }, 4000);
             })
+
+        // $http.get(`${url}/room/${data.id}`)
+        //     .then(res => {
+        //         localStorage.setItem('roomId', data.id)
+        //         $scope.sucessMsg = 'The room has been found. You will now be redirected to create your character'
+        //         $scope.user.rooms.push(data.id)
+        //         console.log($scope.user)
+        //         $timeout(() => {
+        //             $scope.sucessMsg = ''
+        //             // $location.url(`/race-selection`)
+        //         }, 4000);
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //         $scope.failMsg = 'The room does not exist'
+        //         $timeout(() => {
+        //             $scope.failMsg = ''
+        //         }, 4000);
+        //     })
     }
-
-    // if (localStorage.user) {
-    //     $scope.user = JSON.parse(localStorage.getItem('user'))
-    //     $location.url('/user-page')
-    // }
-    // console.warn($scope.user)
-
-    // // Get the rooms of a user
-    // $scope.getUserRooms = () => {
-    //     if ($scope.user.type === 'GM') {
-    //         $scope.queryParam = {
-    //             "where": { "gm": $scope.user.username }
-    //         }
-    //     } else {
-    //         $scope.queryParam = {
-    //             "where": { "players": { "elemMatch": { "id": $scope.user.username } } }
-    //         }
-    //     }
-    //     let queryParam = JSON.stringify($scope.queryParam)
-    //     $http.get(`${url}/api/rooms?filter=${queryParam}`)
-    //         .then(res => {
-    //             $scope.rooms = res.data
-    //             console.log($scope.rooms)
-
-    //         })
-    // }
-    // $scope.getUserRooms()
-
-
     $scope.logoutUser = () => {
         localStorage.clear()
         $location.url('/')
     }
 
-    // $scope.createNewRoom = (data) => {
-    //     data.gm = $scope.user.username
-    //     $http.post(`${url}/api/rooms`, data)
-    //         .then(res => {
-    //             $scope.sucessMsg = 'The room has been created successfuly. You will be redirected in the room page shortly'
-    //             localStorage.setItem('roomCode', res.data.roomCode)
-    //             $location.url(`/room/${res.data.roomCode}`)
 
-    //         })
-    //         .catch(err => {
-    //             $scope.failMsg = 'This Room Code is already in use. Please try a different Room Code'
-    //             console.warn(err, 'catch')
-    //         })
-    // }
 
-    // $scope.enterNewRoom = (data) => {
+    // $scope.characterCreationFinalize = (subclass) => {
+
+    //     let stats = $scope.calculateStats(subclass)
+
+    //     // console.log(stats)
+
+    //     let playerRaceCharcteristics = JSON.parse(localStorage.getItem("playerRace"))
+    //     let data = {
+    //         roomId: localStorage.getItem("roomId"),
+    //         id: localStorage.getItem("id"),
+    //         username: localStorage.getItem("username"),
+    //         playerRace: playerRaceCharcteristics.race,
+    //         playerClass: localStorage.getItem("playerClass"),
+    //         playerSubclass: subclass,
+    //         stats: stats,
+    //         gear: {
+    //             weaponSlot1: "",
+    //             weaponSlot2: "",
+    //             armorSlot1: "",
+    //             armorSlot2: "",
+    //         },
+    //         bag: {
+    //             itemSlot1: "",
+    //             itemSlot2: "",
+    //             itemSlot3: "",
+    //             itemSlot4: "",
+    //             itemSlot5: "",
+    //             itemSlot6: "",
+    //         },
+    //         generalInfo: ""
+    //     }
+
     //     // console.log(data)
-    //     $http.get(`${url}/api/rooms/findOne?filter=%7B%22where%22%3A%20%7B%22roomCode%22%20%3A%20%22${data.roomCode}%22%7D%7D`)
+    //     $http.post(`${url}/room/add-user`, data)
     //         .then(res => {
-    //             // console.log(res.data)
-
-    //             $scope.sucessMsg = 'The room exists. You will be redirected to character creation shortly'
-    //             playerDataForArray = { "id": $scope.user.username }
-
-    //             // Check if this room has already players
-    //             if (res.data.players) {
-    //                 newPlayerArray = res.data.players.concat(playerDataForArray)
-    //                 dataToPost = { "players": newPlayerArray }
-    //             } else dataToPost = { "players": [playerDataForArray] }
-
-
-    //             // This step must be after character class Choose
-    //             $http.post(`${url}/api/rooms/update?where=%7B%22roomCode%22%3A%22${res.data.roomCode}%22%7D`,
-    //                 JSON.stringify(dataToPost)
-    //             )
-    //                 .then(res => {
-    //                     console.log(res.data)
-    //                 })
-    //                 .catch(err => {
-    //                     console.warn(err.data.error)
-    //                 })
-
-    //             $location.url('/character-creation')
-
+    //             // console.log(res)
+    //             $scope.successMsg = 'You have joined the room successfully. You wil be redirected in your roompage shortly'
+    //             localStorage.removeItem("roomId")
+    //             localStorage.removeItem("playerClass")
+    //             localStorage.removeItem("playerRace")
+    //             $timeout(() => {
+    //                 $scope.successMsg = '';
+    //                 $location.url(`/room/${data.roomId}`)
+    //             }, 3000);
     //         })
     //         .catch(err => {
-    //             console.warn(err.data)
+    //             console.warn(err)
     //         })
     // }
-
-
 })
