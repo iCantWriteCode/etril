@@ -11,8 +11,8 @@ function zoomController(zoomtype, updatesize) {
     }
 }
 // const url = 'http://178.128.245.146:3002';
-// const url = 'http://192.168.1.2:3002';
-const url = 'http://etrilapi.1024dev.tk';
+const url = 'http://192.168.1.2:3002';
+// const url = 'http://etrilapi.1024dev.tk';
 
 
 app
