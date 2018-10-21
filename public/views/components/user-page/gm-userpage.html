@@ -37,7 +37,12 @@
                                         <span>Name: {{room.name}}</span>
                                         <span class="ml-auto">ID: {{room._id}}</span>
                                     </div>
-                                    <div class="users">Users: </div>
+                                    <div class="users">Users:
+                                        <span ng-repeat="user in room.users track by $index">
+                                            <span>{{user.username}}</span>
+                                            <span ng-if="!$last">,</span>
+                                        </span>
+                                    </div>
                                 </a>
                             </li>
                         </ul>

@@ -48,14 +48,16 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
     }
 
     $scope.getUserId = (userId) => {
-
-        $scope.userToShow = userId
-
         $scope.userIndex = $scope.room.users.findIndex(user => user.id === userId);
-        console.log($scope.userIndex)
-        $scope.userStats = $scope.room.users[$scope.userIndex].stats
-        $scope.userGear = $scope.room.users[$scope.userIndex].gear
-        $scope.userBag = $scope.room.users[$scope.userIndex].bag
+        $scope.userToShow = $scope.room.users[$scope.userIndex]
+
+        // console.log($scope.userIndex)
+        // console.log($scope.userToShow)
+
+        // $scope.userStats = $scope.room.users[$scope.userIndex].stats
+        // $scope.userGear = $scope.room.users[$scope.userIndex].gear
+        // $scope.userBag = $scope.room.users[$scope.userIndex].bag
+        // console.log($scope.userBag)
 
     }
 
@@ -72,8 +74,8 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
     //     //     })
     // }
     $scope.editUserRoomData = (user) => {
-        console.log('?????')
-        console.log(user)
+        // console.log('?????')
+        // return console.log(user)
         $http
             .patch(`${url}/room/edit-user/${$routeParams.roomCode}`, user)
             .then(res => {

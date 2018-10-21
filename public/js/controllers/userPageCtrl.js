@@ -8,6 +8,7 @@ app.controller('userPageCtrl', function ($scope, $location, $http, $timeout) {
         .then(res => {
             console.log(res)
             $scope.user = res.data
+
         })
         .catch(err => {
             console.warn(err)

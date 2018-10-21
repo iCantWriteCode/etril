@@ -25,19 +25,22 @@
 
     </div>
 
-    <div class="row" style="width: 100%; height: calc(100vh - 211px); position: relative;overflow: scroll;    margin: 0 auto;">
-        <div class="my-canvas" style="width: 100%;height: 100%;">
-            <img ng-if="map === 'Guren Graslands'" my-draggable src="/images/maps/omap.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='tamir'" my-draggable src="/images/maps/1.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='bayar'" my-draggable src="/images/maps/2.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='spike bay'" my-draggable src="/images/maps/3.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='scarlet hills'" my-draggable src="/images/maps/4.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='erdene forest'" my-draggable src="/images/maps/5.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='dalai village'" my-draggable src="/images/maps/6.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='tsetseg forest'" my-draggable src="/images/maps/7.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='golden valley'" my-draggable src="/images/maps/8.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-            <img ng-if="map==='IkhThorog'" my-draggable src="/images/maps/9.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+    <div class="row">
+        <div class="col">
+            <img class="img-fluid" ng-if="map === 'Guren Graslands'" src="/images/maps/omap.jpg">
+            <img class="img-fluid" ng-if="map==='tamir'" src="/images/maps/1.png">
+            <img class="img-fluid" ng-if="map==='bayar'" src="/images/maps/2.png">
+            <img class="img-fluid" ng-if="map==='spike bay'" src="/images/maps/3.png">
+            <img class="img-fluid" ng-if="map==='scarlet hills'" src="/images/maps/4.png">
+            <img class="img-fluid" ng-if="map==='erdene forest'" src="/images/maps/5.png">
+            <img class="img-fluid" ng-if="map==='dalai village'" src="/images/maps/6.png">
+            <img class="img-fluid" ng-if="map==='tsetseg forest'" src="/images/maps/7.jpg">
+            <img class="img-fluid" ng-if="map==='golden valley'" src="/images/maps/8.png">
+            <img class="img-fluid" ng-if="map==='IkhThorog'" src="/images/maps/9.png">
         </div>
+        <!-- <div class="my-canvas" style="width: 100%;height: 100%;"> -->
+
+        <!-- </div> -->
     </div>
 </div>
 
@@ -50,7 +53,12 @@
             </div>
         </div>
         <form class=" row nav-content" ng-submit="editUserRoomData(userToShow)">
+
+            <!-- userToShow.id {{userToShow.id}}
+            <br>
+            user.id {{user.id}} -->
             <div class="col-12" ng-repeat="user in room.users" ng-if="userToShow.id === user.id">
+
                 <div class="row pb-2">
                     <div class="col">Name: {{userToShow.username}}</div>
                     <div class="col text-right">Level: {{userToShow.level}} <span ng-if="user.level === undefined">undefined</span></div>
@@ -66,6 +74,7 @@
                         <div class="row">
                             <div class="col">Vitality</div>
                             <div class="col">
+                                <!-- {{userToShow.stats.vitality}} -->
                                 <input class="custom-input" type="text" ng-model="userToShow.stats.vitality"
                                     placeholder="Vitality">
                             </div>
