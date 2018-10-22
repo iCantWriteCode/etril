@@ -10,7 +10,21 @@
         <!-- <button class="mt-3 choose-class-btn" ng-click="characterCreationFinalize()">Finish</button> -->
     </div>
     <div class="row" style="color:white">
-        <span ng-if="avaliableClass==='Chevalier' || playerRace.race === 'Human'" class="btn btn-primary" ng-click="characterCreationFinalize('Chevalier')">
+        <div class="col" ng-if="avaliableClass1" ng-click="characterCreationFinalize(avaliableClass1)">
+            <img class="img-fluid" ng-src="/images/subclasses/{{avaliableClass1}}.png" err-src="https://cdn.browshot.com/static/images/not-found.png">
+            <div>avaliableClass1: {{avaliableClass1}}</div>
+        </div>
+        <div class="col" ng-if="avaliableClass2" ng-click="characterCreationFinalize(avaliableClass2)">
+            <img class="img-fluid" ng-src="/images/subclasses/{{avaliableClass2}}.png" err-src="https://cdn.browshot.com/static/images/not-found.png">
+            <div>avaliableClass2: {{avaliableClass2}}</div>
+        </div>
+        <div class="col" ng-if="otherClass">
+            <img class="img-fluid" ng-src="/images/subclasses/{{otherClass}}.png" err-src="https://cdn.browshot.com/static/images/not-found.png">
+            <div>otherClass: {{otherClass}}</div>
+        </div>
+
+
+        <!-- <span ng-if="avaliableClass==='Chevalier' || playerRace.race === 'Human'" class="btn btn-primary" ng-click="characterCreationFinalize('Chevalier')">
             <img src="/images/subclasses/Chevalier.png" alt="" class="img-fluid" style="max-width:200px">
         </span>
         <span ng-if="avaliableClass==='Rogue' || playerRace.race === 'Human'" class="btn btn-primary" ng-click="characterCreationFinalize('Rogue')">Rogue</span>
@@ -26,7 +40,7 @@
 
         </span>
         <span ng-if="playerClass==='Mercenary'" class="btn btn-primary" ng-click="characterCreationFinalize('Sniper')">Sniper
-        </span>
+        </span> -->
     </div>
 
 

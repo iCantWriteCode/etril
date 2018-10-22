@@ -5,40 +5,48 @@
     <div ng-if="userToShow.stats.intelect >= 5">
         <div class="row">
             <div class="col" ng-init="map='Guren Graslands'">
-                <span class="show-map-btn" ng-class="map === 'Guren Graslands' ? 'active' : ' ' " ng-click="map = 'Guren Graslands'">
+                <span class="show-map-btn" ng-show="room.maps.gurenGraslands" ng-class="map === 'Guren Graslands' ? 'active' : ''"
+                    ng-click="map = 'Guren Graslands'">
                     Guren Graslands
                 </span>
-                <span class="show-map-btn" ng-class="map==='tamir' ? 'active' :  '' " ng-click="map = 'tamir'">tamir</span>
-                <span class="show-map-btn" ng-class="map==='bayar' ? 'active' :  ''" ng-click="map = 'bayar'">bayar</span>
-                <span class="show-map-btn" ng-class="map==='spike bay' ? 'active' :  ''" ng-click="map = 'spike bay'">spike
+                <span class="show-map-btn" ng-show="room.maps.tamir" ng-class="map==='tamir' ? 'active' :  ''" ng-click="map = 'tamir'">tamir</span>
+                <span class="show-map-btn" ng-show="room.maps.bayar" ng-class="map==='bayar' ? 'active' :  ''" ng-click="map ='bayar'">bayar</span>
+                <span class="show-map-btn" ng-show="room.maps.spikeBay" ng-class="map==='spike bay' ? 'active' :  ''"
+                    ng-click="map = 'spike bay'">spike
                     bay</span>
-                <span class="show-map-btn" ng-class="map==='scarlet hills' ? 'active' : ' '" ng-click="map = 'scarlet hills'">scarlet
+                <span class="show-map-btn" ng-show="room.maps.scarletHills" ng-class="map==='scarlet hills' ? 'active' : ''"
+                    ng-click="map = 'scarlet hills'">scarlet
                     hills</span>
-                <span class="show-map-btn" ng-class="map==='erdene forest' ? 'active' : ' '" ng-click="map = 'erdene forest'">erdene
+                <span class="show-map-btn" ng-show="room.maps.erdeneForest" ng-class="map==='erdene forest' ? 'active' : ''"
+                    ng-click="map = 'erdene forest'">erdene
                     forest</span>
-                <span class="show-map-btn" ng-class="map==='dalai village' ? 'active' : ' '" ng-click="map = 'dalai village'">dalai
+                <span class="show-map-btn" ng-show="room.maps.dalaiVillage" ng-class="map==='dalai village' ? 'active' : ''"
+                    ng-click="map = 'dalai village'">dalai
                     village</span>
-                <span class="show-map-btn" ng-class="map==='tsetseg forest' ? 'active' : ' '" ng-click="map = 'tsetseg forest'">tsetseg
+                <span class="show-map-btn" ng-show="room.maps.tsetsegForest" ng-class="map==='tsetseg forest' ? 'active' : ''"
+                    ng-click="map = 'tsetseg forest'">tsetseg
                     forest</span>
-                <span class="show-map-btn" ng-class="map==='golden valley' ? 'active' : ' '" ng-click="map = 'golden valley'">golden
+                <span class="show-map-btn" ng-show="room.maps.goldenValley" ng-class="map==='golden valley' ? 'active' : ''"
+                    ng-click="map = 'golden valley'">golden
                     valley</span>
-                <span class="show-map-btn" ng-class="map==='IkhThorog' ? 'active' : ' '" ng-click="map = 'IkhThorog'">Ikh'Thorog</span>
+                <span class="show-map-btn" ng-show="room.maps.IkhThorog" ng-class="map==='IkhThorog' ? 'active' : ''"
+                    ng-click="map = 'IkhThorog'">Ikh'Thorog</span>
             </div>
 
         </div>
 
-        <div class="row" style="width: 100%; height: calc(100vh - 211px); position: relative;overflow: scroll;    margin: 0 auto;">
-            <div class="my-canvas" style="width: 100%;height: 100%;">
-                <img ng-if="map === 'Guren Graslands'" my-draggable src="/images/maps/omap.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='tamir'" my-draggable src="/images/maps/1.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='bayar'" my-draggable src="/images/maps/2.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='spike bay'" my-draggable src="/images/maps/3.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='scarlet hills'" my-draggable src="/images/maps/4.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='erdene forest'" my-draggable src="/images/maps/5.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='dalai village'" my-draggable src="/images/maps/6.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='tsetseg forest'" my-draggable src="/images/maps/7.jpg" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='golden valley'" my-draggable src="/images/maps/8.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
-                <img ng-if="map==='IkhThorog'" my-draggable src="/images/maps/9.png" style="transform: scale({{updatesize / 100}}); top:{{updateY}}px; left:{{updateX}}px;">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" ng-if="map === 'Guren Graslands'" src="/images/maps/omap.jpg">
+                <img class="img-fluid" ng-if="map==='tamir'" src="/images/maps/1.png">
+                <img class="img-fluid" ng-if="map==='bayar'" src="/images/maps/2.png">
+                <img class="img-fluid" ng-if="map==='spike bay'" src="/images/maps/3.png">
+                <img class="img-fluid" ng-if="map==='scarlet hills'" src="/images/maps/4.png">
+                <img class="img-fluid" ng-if="map==='erdene forest'" src="/images/maps/5.png">
+                <img class="img-fluid" ng-if="map==='dalai village'" src="/images/maps/6.png">
+                <img class="img-fluid" ng-if="map==='tsetseg forest'" src="/images/maps/7.jpg">
+                <img class="img-fluid" ng-if="map==='golden valley'" src="/images/maps/8.png">
+                <img class="img-fluid" ng-if="map==='IkhThorog'" src="/images/maps/9.png">
             </div>
         </div>
     </div>

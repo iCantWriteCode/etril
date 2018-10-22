@@ -30,17 +30,8 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
                         localStorage.setItem('roomId', $scope.roomCode)
                         $location.url('/race-selection')
                     }
-                    // console.log($scope.userToShow)
                 }
-                // else {
-                // $scope.singleUserIndex = $scope.room.users.findIndex(user => user.id === localStorage.getItem('id'))
-                //     $scope.userToShow = $scope.room.users[$scope.singleUserIndex]
-                //     $scope.userIdToShow = $scope.room.users[$scope.singleUserIndex].id
-                //     $scope.userStats = $scope.room.users[$scope.singleUserIndex].stats
-                //     $scope.userGear = $scope.room.users[$scope.singleUserIndex].gear
-                //     $scope.userBag = $scope.room.users[$scope.singleUserIndex].bag
-                //     console.log($scope.room.users[$scope.singleUserIndex])
-                // }
+
             })
             .catch(err => {
                 console.warn(err)
@@ -51,28 +42,11 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
         $scope.userIndex = $scope.room.users.findIndex(user => user.id === userId);
         $scope.userToShow = $scope.room.users[$scope.userIndex]
 
-        // console.log($scope.userIndex)
-        // console.log($scope.userToShow)
 
-        // $scope.userStats = $scope.room.users[$scope.userIndex].stats
-        // $scope.userGear = $scope.room.users[$scope.userIndex].gear
-        // $scope.userBag = $scope.room.users[$scope.userIndex].bag
-        // console.log($scope.userBag)
 
     }
 
-    // $scope.editUserRoomData = (stats, gear, bag, user) => {
-    //     $scope.userForEdit = $scope.room.users.find(user => user.id === $scope.userToShow)
-    //     console.log($scope.userForEdit)
-    //     // $http
-    //     //     .patch(`${url}/room/edit-user/${$routeParams.roomCode}`, $scope.userForEdit)
-    //     //     .then(res => {
-    //     //         console.log(res)
-    //     //     })
-    //     //     .catch(err => {
-    //     //         console.warn(err)
-    //     //     })
-    // }
+
     $scope.editUserRoomData = (user) => {
         // console.log('?????')
         // return console.log(user)
@@ -84,5 +58,28 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
             .catch(err => {
                 console.warn(err)
             })
+    }
+    $scope.addMapTooRoom = (room) => {
+
+        // return console.log(room, $scope.room._id)
+
+        $http
+            .patch(`${url}/room/maps/${$scope.room._id}`, room.maps)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.warn(err)
+            })
+        // $http
+        //     .patch(`${url}/room/edit-user/${$routeParams.roomCode}`, user)
+        //     .then(res => {
+        //         console.log(res)
+        //     })
+        //     .catch(err => {
+        //         console.warn(err)
+        //     })
+        // data.maps.data = true
+        // console.log(user)
     }
 })
