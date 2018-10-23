@@ -6,7 +6,7 @@ body {
     min-height: 100vh
 }
 .gold-color {
-    color: #bb843e;
+    color: #98e7b8;
 }
 
 
@@ -94,8 +94,27 @@ body {
     border: 1px solid #cccccc;
     border-bottom: none
 }
+.navtabs .col {
+    flex: 0;
+    padding: 0;
+}
+.navtabs .col:first-child{
+    padding-left: 1rem;
+}
 .navtabs .col.active {
     font-weight: 700;
+}
+.navtabs .col span {
+    display: inline-block;
+    border: 1px solid #4bcb7e;
+    padding: .25rem 1rem;
+    color: #4bcb7e;
+    margin-right: .75rem;
+
+}
+.navtabs .col.active span {
+    background: #4bcb7e;
+    color: white;
 }
 .row.nav-content {
     border: 1px solid #cccccc;
@@ -154,4 +173,8 @@ body {
 .gear-col .custom-input,
 .bag-col .custom-input{
     text-align: center
+}
+
+.subclasss-row img {
+    max-height: 300px;
 }

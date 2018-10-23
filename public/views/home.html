@@ -26,6 +26,9 @@
                     <div ng-if='successMsg' class="alert alert-success" role="alert">
                         {{successMsg}}
                     </div>
+                    <div ng-if='failMsg' class="alert alert-danger" role="alert">
+                        {{failMsg}}
+                    </div>
                     <form ng-submit="login(data)">
                         <div class="form-group">
                             <label>Username</label>
@@ -59,6 +62,9 @@
                 <div class="modal-body">
                     <div ng-if='successMsg' class="alert alert-success" role="alert">
                         {{successMsg}}
+                    </div>
+                    <div ng-if='failMsg' class="alert alert-danger" role="alert">
+                        {{failMsg}}
                     </div>
                     <form ng-submit="registerUser(data)">
                         <div class="form-group">

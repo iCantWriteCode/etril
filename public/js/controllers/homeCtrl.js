@@ -26,6 +26,10 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
             })
             .catch(err => {
                 console.warn(err)
+                $scope.failMsg = err.data.message
+                $timeout(() => {
+                    $scope.failMsg = null;
+                }, 3000)
             })
     }
 
@@ -39,6 +43,10 @@ app.controller('homeCtrl', function ($scope, $location, $http, $timeout) {
             })
             .catch(err => {
                 console.warn(err)
+                $scope.failMsg = err.data.message
+                $timeout(() => {
+                    $scope.failMsg = null;
+                }, 3000)
             })
     }
 

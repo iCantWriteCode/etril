@@ -1,4 +1,4 @@
-app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
+app.controller('roomCtrl', function ($scope, $http, $routeParams, $location, $timeout) {
 
     $scope.view = 'map'
     $scope.userType = localStorage.getItem('userType')
@@ -54,9 +54,17 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
             .patch(`${url}/room/edit-user/${$routeParams.roomCode}`, user)
             .then(res => {
                 console.log(res)
+                $scope.successMsg = `The user ${user.username} has been modified successfully`
+                $timeout(() => {
+                    $scope.successMsg = null
+                }, 4000)
             })
             .catch(err => {
                 console.warn(err)
+                $scope.failMsg = `A wild error has occured. Please contact the company ASAP`
+                $timeout(() => {
+                    $scope.failMsg = null
+                }, 4000)
             })
     }
     $scope.addMapTooRoom = (room) => {
@@ -67,9 +75,17 @@ app.controller('roomCtrl', function ($scope, $http, $routeParams, $location) {
             .patch(`${url}/room/maps/${$scope.room._id}`, room.maps)
             .then(res => {
                 console.log(res)
+                $scope.successMsg = `The changes has been saved`
+                $timeout(() => {
+                    $scope.successMsg = null
+                }, 4000)
             })
             .catch(err => {
                 console.warn(err)
+                $scope.failMsg = `A wild error has occured. Please contact the company ASAP`
+                $timeout(() => {
+                    $scope.failMsg = null
+                }, 4000)
             })
         // $http
         //     .patch(`${url}/room/edit-user/${$routeParams.roomCode}`, user)

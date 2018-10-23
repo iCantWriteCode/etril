@@ -1,4 +1,4 @@
-<div ng-if="view === 'maps'" style="position:relative">
+<div ng-if="view === 'maps'" style="position:relative" class="room-pa">
     <!-- <h3 class="text-center">GM</h3> -->
     <form ng-submit="addMapTooRoom(room)" class="pb-3  mb-3" style="border-bottom:1px solid grey;">
         <h5 class=" no-gutters" style="    border-bottom: 1px solid grey;
@@ -52,7 +52,7 @@
 
             </div>
         </div>
-        <button class="show-map-btn active mt-2">Save</button>
+        <button class="show-map-btn active mt-2 px-5">Save</button>
     </form>
 
     <div class="row">
@@ -81,16 +81,16 @@
 
     <div class="row">
         <div class="col">
-            <img class="img-fluid" ng-if="map === 'Guren Graslands'" src="/images/maps/omap.jpg">
-            <img class="img-fluid" ng-if="map==='tamir'" src="/images/maps/1.png">
-            <img class="img-fluid" ng-if="map==='bayar'" src="/images/maps/2.png">
-            <img class="img-fluid" ng-if="map==='spike bay'" src="/images/maps/3.png">
-            <img class="img-fluid" ng-if="map==='scarlet hills'" src="/images/maps/4.png">
-            <img class="img-fluid" ng-if="map==='erdene forest'" src="/images/maps/5.png">
-            <img class="img-fluid" ng-if="map==='dalai village'" src="/images/maps/6.png">
-            <img class="img-fluid" ng-if="map==='tsetseg forest'" src="/images/maps/7.jpg">
-            <img class="img-fluid" ng-if="map==='golden valley'" src="/images/maps/8.png">
-            <img class="img-fluid" ng-if="map==='IkhThorog'" src="/images/maps/9.png">
+            <img class="img-fluid" ng-if="map === 'Guren Graslands'" src="/images/maps-qwerty-min/GM Guren Grasslands-min.png">
+            <img class="img-fluid" ng-if="map==='tamir'" src="/images/maps-qwerty-min/GM Tamir the Capital-min.png">
+            <img class="img-fluid" ng-if="map==='bayar'" src="/images/maps-qwerty-min/GM Bayar city-min.png">
+            <img class="img-fluid" ng-if="map==='spike bay'" src="/images/maps-qwerty-min/GM Spike Bay-min.png">
+            <img class="img-fluid" ng-if="map==='scarlet hills'" src="/images/maps-qwerty-min/GM Scarlet Hills Map-min.png">
+            <img class="img-fluid" ng-if="map==='erdene forest'" src="/images/maps-qwerty-min/GM Erdene Forest-min.png">
+            <img class="img-fluid" ng-if="map==='dalai village'" src="/images/maps-qwerty-min/GM Dalai Village Map-min.png">
+            <img class="img-fluid" ng-if="map==='tsetseg forest'" src="/images/maps-qwerty-min/GM Tsetseg Forest-min.png">
+            <img class="img-fluid" ng-if="map==='golden valley'" src="/images/maps-qwerty-min/GM Guren Grasslands-min.png">
+            <img class="img-fluid" ng-if="map==='IkhThorog'" src="/images/maps-qwerty-min/GM Ikh'Thorog Map-min.png">
         </div>
         <!-- <div class="my-canvas" style="width: 100%;height: 100%;"> -->
 
@@ -103,7 +103,7 @@
     <div ng-if="room.users.length > 0">
         <div class="row navtabs">
             <div class="col" ng-repeat="user in room.users" ng-click="getUserId(user.id)" ng-class="user.id === userToShow.id ? 'active' : ''">
-                {{user.username}}
+                <span>{{user.username}}</span>
             </div>
         </div>
         <form class=" row nav-content" ng-submit="editUserRoomData(userToShow)">
@@ -272,13 +272,20 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <button class="show-map-btn active float-right px-5 ">Save</button>
 
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary float-right">Save</button>
         </form>
     </div>
 
 
+</div>
+
+<div ng-if='successMsg' class="alert alert-success" role="alert">
+    {{successMsg}}
+</div>
+<div ng-if='failMsg' class="alert alert-danger" role="alert">
+    {{failMsg}}
 </div>

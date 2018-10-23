@@ -34,7 +34,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
                 $scope.avaliableClass1 = "Plague Doctor"; $scope.avaliableClass2 = "Scholar"
             }
             else if ($scope.playerClass === "Mercenary") {
-                $scope.avaliableClass1 = "Rotier"; $scope.avaliableClass2 = "Sniper"
+                $scope.avaliableClass1 = "Routier"; $scope.avaliableClass2 = "Ranger"
             }
 
         }
@@ -51,7 +51,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
                     stats.vitality = "10"
                     stats.teamwork = "15"
                 }
-                else if (subclass === "Sniper") {
+                else if (subclass === "Ranger") {
                     stats.power = "40"
                     stats.vitality = "50"
                     stats.teamwork = "45"
@@ -83,7 +83,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
                 let stats = {
                     mobility: "2",
                 }
-                if (subclass === "Rogue" || subclass === "Sniper") {
+                if (subclass === "Rogue" || subclass === "Ranger") {
                     stats.vitality = "50"
                     stats.power = "80"
                     stats.teamwork = "30"
@@ -130,7 +130,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
                     stats.power = "60"
                     stats.vitality = "100"
                     stats.mobility = "1"
-                } else if (subclass === "Sniper") {
+                } else if (subclass === "Ranger") {
                     stats.power = "40"
                     stats.vitality = "50"
                     stats.mobility = "2"
@@ -165,7 +165,7 @@ app.controller('subclassSelectionCtrl', function ($scope, $http, $location, $tim
                     stats.vitality = "100"
                     stats.power = "40"
                     stats.teamwork = "45"
-                } else if (subclass === "Sniper") {
+                } else if (subclass === "Ranger") {
                     stats.vitality = "100"
                     stats.power = "60"
                     stats.teamwork = "30"
